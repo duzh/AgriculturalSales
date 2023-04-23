@@ -1,0 +1,225 @@
+<?php
+namespace Mdg\Frontend\Controllers;
+use Phalcon\Mvc\Controller;
+use Lib\Crypt as crypt;
+use Mdg\Models\Users as Users;
+use Mdg\Models\Orders as Orders;
+use Mdg\Models\UsersExt as UsersExt;
+use Mdg\Models\Shop as Shop;
+use Mdg\Models as M;
+use Lib as L;
+
+
+class ControllerBase extends Controller
+{
+    
+    public function initialize() 
+    {
+
+        header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
+    
+        $cateData = array();
+        $ordercount = 0;
+        
+        if (!empty($_COOKIE["ync_auth"]) && $_COOKIE["ync_auth"] != '') 
+        {
+            $user = crypt::authcode($_COOKIE["ync_auth"], $operation = 'DECODE');
+            $users = explode("|", $user);
+            $mobile = isset($users[1]) ? $users[1] : 0;
+            
+            if ($mobile) 
+            {
+                $user = Users::checkLogin($mobile);
+                $userext = UsersExt::getuserext($user->id);
+                $this->session->user = array(
+                    'mobile' => $user->username,
+                    'id' => $user->id,
+                    'name' => $userext->name
+                );
+                $ordercount = Orders::getordercount($user->id);
+            }
+            else
+            {
+                $_COOKIE["ync_auth"] = array();
+                $this->session->user = array();
+            }
+        }
+        else
+        {
+            $_COOKIE["ync_auth"] = array();
+            $this->session->user = array();
+        }
+        /* 头部数据 */  
+        $cache_key='cate_home.cache';
+
+        $cateData = $this->cache->get($cache_key);
+        
+        if($cateData === NULL) {
+        
+            $data = M\Category::find(array(
+                " is_groom = 1 ",
+                'columns' => 'id, title,abbreviation,parent_id',
+                'order' => 'id ASC '
+            ))->toArray();
+            
+            $sort = array(
+                7 => 0,  //粮油
+                1 => 1,  //蔬菜
+                2 => 2,  //水果
+                1377 => 3, //苗木
+                15 => 4,  //干果
+                22 => 5,  //中药材
+                899 => 6, //其他
+            );
+
+            $pid = array_unique(array_column($data, 'parent_id'));
+            $data = L\Arrays::toTree($data, 'id', 'parent_id');
+            
+            $k = 0;
+
+            foreach ($data as $row) {
+                
+                if(isset($sort[$row['id']])) {
+                    $k = $sort[$row['id']];
+                }else{
+                    continue;
+                }
+
+                $cateData[$k]['id'] = $row['id'];
+                $cateData[$k]['title'] = $row['title'];
+                $cateData[$k]['parent_id'] = $row['parent_id'];
+                $cateData[$k]['cate'] = array();
+                /* 检测是否存在 */
+                foreach ($row['children'] as $key => $val) {
+                    switch ($val['abbreviation']) {
+                        case 'A': case 'B': case 'C': case 'D': case 'E':
+                            if(isset($cateData[$k]['cate'][1]) && count($cateData[$k]['cate'][1]) > 10 ) break;
+                            $cateData[$k]['cate'][1][$key]  = $val;
+                            
+                            break;
+                        case 'F': case 'G': case 'H': case 'I': case 'J':
+                            if(isset($cateData[$k]['cate'][2]) && count($cateData[$k]['cate'][2]) > 10 ) break;
+                            $cateData[$k]['cate'][2][$key]  = $val;
+                            break;
+                        case 'K': case 'L': case 'M': case 'N': case 'O':
+                            if(isset($cateData[$k]['cate'][3]) && count($cateData[$k]['cate'][3]) > 10 ) break;
+                            $cateData[$k]['cate'][3][$key]  = $val;
+
+                            break; 
+                        case 'P': case 'Q': case 'R': case 'S': case 'T':
+                            if(isset($cateData[$k]['cate'][4]) && count($cateData[$k]['cate'][4]) > 10 ) break;
+                           $cateData[$k]['cate'][4][$key]  = $val;
+
+                            break;
+                        case 'U': case 'V': case 'W': case 'X': case 'Y':case 'Z':
+                            if(isset($cateData[$k]['cate'][5]) && count($cateData[$k]['cate'][5]) > 10 ) break;
+                            $cateData[$k]['cate'][5][$key]  = $val;
+                            break;
+                    }
+                }
+                
+                if($cateData[$k]['cate']) {
+                    ksort($cateData[$k]['cate']);
+                }
+                if(!in_array($cateData[$k]['id'] , $pid)) unset($cateData[$k]);
+            }
+           
+            $this->cache->save($cache_key, $cateData);
+        }else{
+        ksort($cateData);   
+        }       
+        $user = $this->session->user;
+        #云农宝连接判断 duzh
+        if(isset($user['id'])){
+            $this->view->is_brokeruser = Users::findFirstByid($user["id"]);
+            $messagecount = M\Message::GetMessageUnreadCount($user['id']);
+            $checkuserynp = M\UserYnpInfo::findFirstByuser_id($user["id"]);
+            if($checkuserynp){
+                $ynbType['text'] = '我的云农宝';
+                $ynbType['url'] = '/member/ynbbinding/gotoynb';
+                $ynbType['type'] = 1;
+            }
+            else{
+                $ynbType['text'] = '云农宝';
+                $ynbType['url'] = NYNP_URL.'ynp-web/';
+                $ynbType['url2'] = '/member/ynbbinding/bind';
+                $ynbType['type'] = 2;
+            }
+
+        }else{
+            $this->view->is_brokeruser =false;
+            $messagecount=0;
+            $ynbType['text'] = '云农宝';
+            $ynbInterFace = new L\YnbInterface();
+            $ynbType['url'] = NYNP_URL.'ynp-web/';
+            $ynbType['type'] = 1;
+
+        }
+        #end
+         $hotsell=array();
+        $hotsell=M\Sell::getHotlist();
+       
+        $this->usercount = 100;
+        $this->shopcount = 100;
+        $this->storecount = 100;
+        $this->servicecount = 100;
+        $this->ordercount = 100;
+        $this->view->haeder_cate = $cateData;
+        /* 头部数据 */
+        $this->view->userInfo = $this->checkUserInfo();
+        //检测用户是否完善信息
+        $this->view->_nav = $_nav = strtolower($this->dispatcher->getControllerName());
+        $this->view->_action = $action = strtolower($this->dispatcher->getActionName());
+
+        $this->view->ynbtype = $ynbType;
+        $this->view->getMyCateList = $getMyCateList = $this->getMyCateList();
+        $this->view->get = $_GET;
+        $this->view->is_ajax = 0;
+        $this->view->messagecount = $messagecount;
+        $this->view->title = '';
+        $this->view->hotsell=$hotsell;
+        $this->view->keywords = '';
+        $this->view->descript = '';
+        $this->view->ordercount = $ordercount;
+
+    }
+
+    /**
+     * 获取用户关注分类
+     * @return [type] [description]
+     */
+    public function getMyCateList() {
+        $uid = $this->getUserID();
+        if(!$uid) return array();
+        /* */
+        $sell = M\UserAttention::selectByuid($uid,1);
+        $pur = M\UserAttention::selectByuid($uid,2);
+        
+        return array( $sell , $pur);
+    }
+
+
+    public function getUserID() {
+        $user = $this->session->user;
+        return isset($user['id']) ? $user['id'] : 0 ;
+    }
+
+    public function getUserName() {
+        $user = $this->session->user;
+        return $user['mobile'];
+    }
+    /**
+     * 检测当前用户是否信息完整
+     * @return [type] [description]
+     */
+    public function checkUserInfo() {
+        $user = $this->session->user;
+        $uid = isset($user['id']) ? intval($user['id']) : 0 ;
+   
+        if(!$uid) return 1;
+        $info = M\Users::findFirst($uid);
+        if(!$info) return 1;
+        if(!isset($info->ext->name) || !isset($info->ext->areas_name)  || !$info->ext->name || !$info->ext->areas_name ) return 1;
+        return false;
+    }
+}

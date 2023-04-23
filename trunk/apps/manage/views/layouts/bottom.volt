@@ -1,0 +1,1 @@
+<div class="footer">Copyright © 2013-2014 ync365.com All rights reserved.</div>

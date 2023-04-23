@@ -1,0 +1,21 @@
+<?php echo $this->tag->form(array("category/create","class"=>'form-horizontal')) ?>
+<?php echo $this->getContent(); ?>
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">添加 category</legend>
+        </div>
+            <div class="control-group">
+        <label class="control-label" for="name">Name</label>
+        <div class="controls">
+            <?php echo $this->tag->textField(array("name", "size" => 30)) ?>
+            <p class="help-block">help text</p>
+        </div>
+    </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <?php echo $this->tag->submitButton(array("提交",'class'=>'btn btn-primary')) ?>
+            </div>
+        </div>
+    </fieldset>
+</form>

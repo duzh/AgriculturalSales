@@ -1,0 +1,22 @@
+<?php echo $this->getContent(); ?>
+<?php echo $this->tag->form(array("category/save","class"=>'form-horizontal')); ?>
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">编辑 category</legend>
+        </div>
+            <div class="control-group">
+        <label class="control-label" for="name">Name</label>
+        <div class="controls">
+            <?php echo $this->tag->textField(array("name", "size" => 30)) ?>
+            <p class="help-block">help text</p>
+        </div>
+    </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <?php echo $this->tag->hiddenField("id") ?>
+                <?php echo $this->tag->submitButton(array("Save",'class'=>'btn btn-primary')); ?>
+            </div>
+        </div>
+    </fieldset>
+</form>

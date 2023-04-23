@@ -1,0 +1,65 @@
+{{ partial('layouts/page_header') }}
+
+<div class="contianer pb30">
+    
+    {{ partial('layouts/nav_purchase') }}
+    <div class="shop_symm w960 clearfix">
+        <div class="symm_left f-fl">
+            {{ partial('layouts/shoper_left') }}
+            {{ partial('layouts/comments_left') }}
+        </div>
+        <!-- 右侧 start -->
+        <div class="symm_right f-fr">
+            <div class="shop_intro">
+                <h6>店铺介绍</h6>
+                <div class="information f-oh">
+                    <div class="f-oh">
+                        <p class="f-ff0">{{shopcredit.shop_desc}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="shop_goods">
+                <h6>采购产品</h6>
+                <div class="list clearfix">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr height="30" class="title">
+                            <th width="25%">采购商品</th>
+                            <th width="30%">采购地区</th>
+                            <th width="20%">采购商</th>
+                            <th width="25%">
+                                <a style="color:#fff; text-decoration:underline;" href="/store/purchaseshop/goodslist">查看更多</a>
+                            </th>
+                        </tr>
+
+                         {% for key, item in purchaselist['items'] %}
+                         <tr height="40">
+                            <td>{{item['title']}}</td>
+                            <td><?php echo Lib\Utils::getC($item["areas_name"]); ?></td>
+                            <td>{{item['username']}}</td>                           
+                            <td>                            
+                                <a style="margin-right:14px;" class="btn bj_btn" href="javascript:newWindows('newquo', '确定报价', '/member/dialog/newquo/{{item['id']}}');" >报价</a>
+                                <font style="margin-right:0;"><?php echo Mdg\Models\PurchaseQuotation::countQuo($item["id"])?>家报价</font>
+                            </td>                           
+                        </tr>
+                        {% endfor %}
+             
+                </table>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧 end -->
+    </div>
+</div>
+
+<!-- 底部开始 -->
+{{ partial('layouts/footer') }}
+<!-- 底部结束 -->
+<style>
+.shop_goods table .title{ background:rgb(156, 204, 94); color:#fff;}
+.shop_goods table th, .shop_goods table td{ text-align: center;}
+.shop_goods table td .btn{ display:inline-block; margin-left:30px; float:left; width:46px; height:21px; text-align:center; line-height:21px; background:url(http://yncstatic.b0.upaiyun.com/mdg/images/level_btn1.png) no-repeat; background-position:-1px -74px; margin-top:2px; margin-right:6px;}
+.shop_goods table td font{ display:block; float:left; height:25px; line-height:25px;}
+.shop_goods table td .btn:hover{ background-position:-1px -118px; text-decoration:none; color:#fff;}
+</style>
+</body>
+</html>

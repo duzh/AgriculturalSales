@@ -1,0 +1,1245 @@
+<?php
+namespace Mdg\Member\Controllers;
+use Mdg\Models\Users as Users;
+use Mdg\Models\AreasFull as mAreas;
+use Mdg\Models as M;
+use Mdg\Models\Sell as Sell;
+use Lib as L;
+/**
+ * 用户身份验证
+ */
+
+class UserfarmController extends ControllerMember
+{
+    /**
+     * 用户农场
+     */
+    CONST USER_PICTURE_PATH = 'picture_path';
+    /* 用户银行卡  */
+    CONST USER_BANKCARD_PICTURE = 29;
+    /* 用户身份证*/
+    CONST USER_IDCARD_PICTURE = 30;
+    /* 用户手持身份证 */
+    CONST USER_PERSON_PICTURE = 31;
+    /**
+     * 县域
+     */
+    CONST USER_TYPE_HC = 2;
+    /* 村站 */
+    CONST USER_TYPE_VS = 4;
+    /* 可信农场 */
+    CONST USER_TYPE_IF = 8;
+    /* 采购商*/
+    CONST USER_TYPE_PE = 16;
+    
+    public function certificationAction($need = '') 
+    {
+        $iden = array(
+            'if' => self::USER_TYPE_IF,
+            'vs' => self::USER_TYPE_VS,
+            'hc' => self::USER_TYPE_HC,
+            'pe' => self::USER_TYPE_PE
+        );
+        $type = isset($iden[$need]) ? intval($iden[$need]) : 0;
+        
+        if (!$need || !$type) 
+        {
+            echo "<script>alert('来源错误');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        $uid = $this->getUserID();
+        /* 获取认证信息 */
+        $cond[] = " user_id = '{$uid}' AND credit_type = '{$type}' AND status = '1' ";
+        $info = M\UserInfo::findFirst($cond);
+        
+        if (!$info) 
+        {
+            echo "<script>alert('来源错误');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        /* 查询负责区域 */
+        $UserArea = M\UserArea::findFirst(array(
+            " user_id = '{$uid}' and credit_id = '{$info->credit_id}'"
+        ));
+        /* 查询用户农场信息 */
+        $userFramCrops = M\UserFarmCrops::selectByuserFarm($info->user_id, $info->credit_id);
+        $frmaCrops = join('、', array_column($userFramCrops, 'category_name'));
+        /* 获取农场信息 */
+        $UserFarm = M\UserFarm::selectByUser_id($info->user_id, $info->credit_id);
+       
+        $this->view->UserFarm = $UserFarm;
+        $this->view->UserArea = $UserArea;
+        $this->view->frmaCrops = $frmaCrops;
+        $this->view->info = $info;
+    }
+    /**
+     * 用户查看申请最新进度
+     * @return [type] [description]
+     */
+    
+    public function selectByApplyAction() 
+    {
+        $uid = $this->getUserID();
+        /**/
+        $info = M\UserInfo::find(" user_id = '{$uid}' ORDER BY add_time desc ");
+        
+        if (!$info) 
+        {
+            echo "<script>alert('该用户未有申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        /*  查询用户所有申请情况信息 */
+        /* 用户注册类型 */
+        // $tName = isset(M\Users::$_credit_type[$info->credit_type]) ? M\Users::$_credit_type[$info->credit_type] : '';
+        $this->view->data = $info;
+        $this->view->her = $her = isset(\Mdg\Models\Users::$_credit_id[$info->credit_type]) ? \Mdg\Models\Users::$_credit_id[$info->credit_type] : '';
+        $this->view->tName = $tName;
+        $this->view->title = '个人中心-证书详细信息查看';
+    }
+    
+    public function checkCountyAction() 
+    {
+        $seusername = L\Validator::replace_specialChar($this->request->getPost('seusername', 'string', ''));
+        $seid = L\Validator::replace_specialChar($this->request->getPost('seid', 'string', ''));
+        $userfarm = array(
+            'ok' => ''
+        );
+        $client = L\Func::serviceApi();
+        
+        if ($seusername) 
+        {
+            
+            if (!$data = $client->county_selectByMobile($seusername)) 
+            {
+                $userfarm = array(
+                    'error' => '该工程师不存在'
+                );
+                exit(json_encode($userfarm));
+            }
+        }
+        elseif ($seid) 
+        {
+            
+            if (!$data = $client->county_selectByservice_bianhao($seid)) 
+            {
+                $userfarm = array(
+                    'error' => '该工程师不存在'
+                );
+                exit(json_encode($userfarm));
+            }
+        }
+        else
+        {
+            $userfarm = array(
+                'error' => '参数错误'
+            );
+            exit(json_encode($userfarm));
+        }
+        exit(json_encode($userfarm));
+    }
+    /**
+     * 用户身份验证
+     * @return [type] [description]
+     */
+    
+    public function indexAction() 
+    {
+        $this->view->title = '个人中心-身份认证';
+    }
+    /**
+     * 采购商家
+     * @return [type] [description]
+     */
+    
+    public function purchaserAction() 
+    {
+        /*  */
+        
+        if ($this->certcancel(self::USER_TYPE_PE)) 
+        {
+            echo "<script>alert('您的身份已被取消，不能再重复申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        /* 检测用户信息是否完整 */
+        
+        if ($this->checkUserInfo()) 
+        {
+            echo "<script>alert('您的用户信息不完整,请完善后再申请');location.href='/member/perfect/index';</script>";
+            exit;
+        }
+        /* 检测用户是否申请村站 */
+        
+        if ($this->checkapplyFor(self::USER_TYPE_PE)) 
+        {
+            echo "<script>alert('您已申请过此身份,不能重复申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        $sid = $this->session->getId();
+        /*  清除 */
+        M\TmpFile::clearOld($sid);
+        $this->view->cateList = $cateList = M\Category::getTopCaetList();
+        $this->view->bankList = M\Bank::getBankList();
+        $this->view->imgtype = self::USER_PICTURE_PATH;
+        $this->view->sid = $sid;
+        $this->view->year = date('Y');
+        $this->view->title = '个人中心-采购商身份认证';
+    }
+    /**
+     * 采购商家
+     * @return [type] [description]
+     */
+    
+    public function purchasersaveAction() 
+    {
+        
+        if (!$this->request->getPost()) 
+        {
+            $this->flash->error("数据错误!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $category_name_text_0     = trim($this->request->getPost('category_name_text_0', 'string', '') , ',');
+        $category_name_text_1     = trim($this->request->getPost('category_name_text_1', 'string', '') , ',');
+        $member_type              = $this->request->getPost('member_type', 'int', 0);
+        $user_province_id         = $this->request->getPost('user_province_id', 'int', 0);
+        $user_city_id             = $this->request->getPost('user_city_id', 'int', 0);
+        $user_district_id         = $this->request->getPost('user_district_id', 'int', 0);
+        $user_town_id             = $this->request->getPost('user_town_id', 'int', 0);
+        $user_area_province_id    = $this->request->getPost('user_area_province_id', 'int', 0);
+        $user_area_city_id        = $this->request->getPost('user_area_city_id', 'int', 0);
+        $user_area_district_id    = $this->request->getPost('user_area_district_id', 'int', 0);
+        $user_area_town_id        = $this->request->getPost('user_area_town_id', 'int', 0);
+        $user_bank_province_id    = $this->request->getPost('user_bank_province_id', 'int', 0);
+        $user_bank_city_id        = $this->request->getPost('user_bank_city_id', 'int', 0);
+        $user_bank_district_id    = $this->request->getPost('user_bank_district_id', 'int', 0);
+        $province_id              = $this->request->getPost('province_id', 'int', 0);
+        $city_id                  = $this->request->getPost('city_id', 'int', 0);
+        $district_id              = $this->request->getPost('district_id', 'int', 0);
+        $town_id                  = $this->request->getPost('town_id', 'int', 0);
+        $ent_area_province_id     = $this->request->getPost('ent_area_province_id', 'int', 0);
+        $ent_area_city_id         = $this->request->getPost('ent_area_city_id', 'int', 0);
+        $ent_area_district_id     = $this->request->getPost('ent_area_district_id', 'int', 0);
+        $ent_area_town_id         = $this->request->getPost('ent_area_town_id', 'int', 0);
+        $ent_bank_province_id     = $this->request->getPost('ent_bank_province_id', 'int', 0);
+        $ent_bank_city_id         = $this->request->getPost('ent_bank_city_id', 'int', 0);
+        $ent_bank_district_id     = $this->request->getPost('ent_bank_district_id', 'int', 0);
+        $user_name                = L\Validator::replace_specialChar($this->request->getPost('user_name', 'string', ''));
+        $user_credit_no           = L\Validator::replace_specialChar($this->request->getPost('user_credit_no', 'string', ''));
+        $user_mobile              = L\Validator::replace_specialChar($this->request->getPost('user_mobile', 'string', ''));
+        $user_address             = L\Validator::replace_specialChar($this->request->getPost('user_address', 'string', ''));
+        $user_bank_name           = L\Validator::replace_specialChar($this->request->getPost('user_bank_name', 'string', ''));
+        $user_bank_account        = L\Validator::replace_specialChar($this->request->getPost('user_bank_account', 'string', ''));
+        $user_bank_cardno         = L\Validator::replace_specialChar($this->request->getPost('user_bank_cardno', 'string', ''));
+        $ent_company_name         = L\Validator::replace_specialChar($this->request->getPost('ent_company_name', 'string', ''));
+        $ent_certificate_no       = L\Validator::replace_specialChar($this->request->getPost('ent_certificate_no', 'string', ''));
+        $ent_address              = L\Validator::replace_specialChar($this->request->getPost('ent_address', 'string', ''));
+        $ent_erprise_legal_person = L\Validator::replace_specialChar($this->request->getPost('ent_erprise_legal_person', 'string', ''));
+        $ent_contact_name         = L\Validator::replace_specialChar($this->request->getPost('ent_contact_name', 'string', ''));
+        $ent_contact_phone        = L\Validator::replace_specialChar($this->request->getPost('ent_contact_phone', 'string', ''));
+        $ent_contact_fax          = L\Validator::replace_specialChar($this->request->getPost('ent_contact_fax', 'string', ''));
+        $ent_bank_name            = L\Validator::replace_specialChar($this->request->getPost('ent_bank_name', 'string', ''));
+        $ent_bank_account         = L\Validator::replace_specialChar($this->request->getPost('ent_bank_account', 'string', ''));
+        $ent_bank_cardno          = L\Validator::replace_specialChar($this->request->getPost('ent_bank_cardno', 'string', ''));
+        $ent_register_no = L\Validator::replace_specialChar($this->request->getPost('ent_register_no', 'string', ''));
+        $user_certificate_no = L\Validator::replace_specialChar($this->request->getPost('user_certificate_no', 'string', ''));
+
+
+        $category_name_text       = !$member_type ? $category_name_text_0 : $category_name_text_1;
+        $uid                      = $this->getUserID();
+        
+        if (!$uid) 
+        {
+            $this->flash->error("用户信息不存在!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $sid = $this->session->getId();
+        /**/
+        $info = M\Users::findFirst(" id ='{$uid}'");
+        
+        if (!$info) 
+        {
+            $this->flash->error("用户信息不存在!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $this->db->begin();
+        try
+        {
+            $UserInfo = new M\UserInfo();
+            $UserContact = new M\UserContact();
+            $UserBank = new M\UserBank();
+            $UserArea = new M\UserArea();
+            /* 用户基本信息 */
+            $UserInfo->user_id = $uid;
+            $UserInfo->type = $member_type;
+            $UserInfo->apply_time = CURTIME;
+            $UserInfo->status = 0;
+            $UserInfo->certificate_no = !$member_type ? $user_certificate_no : $ent_certificate_no;
+            $UserInfo->phone = !$member_type ? $user_mobile : '';
+            $UserInfo->province_id = !$member_type ? $user_province_id : $province_id;
+            $UserInfo->city_id = !$member_type ? $user_city_id : $city_id;
+            $UserInfo->district_id = !$member_type ? $user_district_id : $district_id;
+            $UserInfo->town_id = !$member_type ? $user_town_id : $town_id;
+            $UserInfo->address = !$member_type ? $user_address : $ent_address;
+            $UserInfo->province_name = M\AreasFull::getAreasNametoid($UserInfo->province_id);
+            $UserInfo->city_name = M\AreasFull::getAreasNametoid($UserInfo->city_id);
+            $UserInfo->district_name = M\AreasFull::getAreasNametoid($UserInfo->district_id);
+            $UserInfo->town_name = M\AreasFull::getAreasNametoid($UserInfo->town_id);
+            $UserInfo->se_id = 0;
+            $UserInfo->credit_type = self::USER_TYPE_PE;
+            $UserInfo->credit_no = $this->getMemberNo($uid, self::USER_TYPE_PE);
+            $UserInfo->company_name = $ent_company_name;
+            $UserInfo->enterprise_legal_person = $ent_erprise_legal_person;
+            $UserInfo->add_time = CURTIME;
+            $UserInfo->last_update_time = CURTIME;
+            $UserInfo->register_no = $ent_register_no;
+            $UserInfo->name = !$member_type ? $user_name : '';
+            $UserInfo->save();
+            $credit_id = $UserInfo->credit_id;
+            // $credit_id = 9;
+            /* 联系人 */
+            $UserContact->user_id = $uid;
+            $UserContact->name = $ent_contact_name;
+            $UserContact->phone = $ent_contact_phone;
+            $UserContact->fax = $ent_contact_fax;
+            $UserContact->add_time = CURTIME;
+            $UserContact->last_update_time = CURTIME;
+            $UserContact->credit_id = $credit_id;
+            $UserContact->save();
+            /* 保存用户银行卡信息 */
+            $UserBank->user_id = $uid;
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_province_id : $ent_bank_province_id);
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_city_id : $ent_bank_city_id);
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_district_id : $ent_bank_district_id);
+            $UserBank->bank_name = !$member_type ? $user_bank_name : $ent_bank_name;
+            $UserBank->bank_address = $bArea ? join(',', $bArea) : '';
+            $UserBank->bank_account = !$member_type ? $user_bank_account : $ent_bank_account;
+            $UserBank->bank_cardno = !$member_type ? $user_bank_cardno : $ent_bank_cardno;
+            $bankcard_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '29' ");
+            $UserBank->bankcard_picture = $bankcard_picture ? $bankcard_picture->file_path : '';
+            $idcard_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '31' ");
+            $UserBank->idcard_picture = $idcard_picture ? $idcard_picture->file_path : '';
+            $person_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '30' ");
+            $UserBank->person_picture = $person_picture ? $person_picture->file_path : '';
+            $identity_picture_lic = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '33' ");
+            $UserBank->identity_picture_lic = $identity_picture_lic ? $identity_picture_lic->file_path : '';
+            /* 身份证背面照 */
+            $idcard_picture_back = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '34' ");
+            $UserBank->idcard_picture_back = $idcard_picture_back ? $idcard_picture_back->file_path : '';
+            $UserBank->add_time = CURTIME;
+            $UserBank->last_update_time = CURTIME;
+            $UserBank->credit_id = $credit_id;
+            $UserBank->save();
+            
+            if ($category_name_text) 
+            {
+                $category_name_text = array_unique(explode(',', $category_name_text));
+                
+                foreach ($category_name_text as $key => $val) 
+                {
+                    /* 检测分类是否存在 */
+                    $cid = intval($val);
+                    
+                    if (!$cate = M\Category::findFirst(" id = '{$cid}' AND parent_id > 0 ")) continue;
+                    $UserFarmCrops = new M\UserFarmCrops();
+                    $UserFarmCrops->user_id = $uid;
+                    $UserFarmCrops->category_name = $cate->title;
+                    $UserFarmCrops->add_time = CURTIME;
+                    $UserFarmCrops->category_id = intval($cate->id);
+                    $UserFarmCrops->credit_id = $credit_id;
+                    $UserFarmCrops->save();
+                }
+            }
+          
+            $this->db->commit();
+        }
+        catch(\Exception $e) 
+        {
+            $this->db->rollback();
+            // print_R($e->getMessage());
+            
+        }
+        $this->response->redirect("userfarm/selectByApply")->sendHeaders();
+    }
+    /**
+     * 村站申请
+     * @return [type] [description]
+     */
+    
+    public function villageAction() 
+    {
+        /*  */
+        
+        if ($this->certcancel(self::USER_TYPE_VS)) 
+        {
+            echo "<script>alert('您的身份已被取消，不能再重复申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        /* 检测用户信息是否完整 */
+        
+        if ($this->checkUserInfo()) 
+        {
+            echo "<script>alert('您的用户信息不完整,请完善后再申请');location.href='/member/perfect/index';</script>";
+            exit;
+        }
+        /* 检测用户是否申请村站 */
+        
+        if ($this->checkapplyFor(self::USER_TYPE_VS)) 
+        {
+            echo "<script>alert('您已申请过此身份,不能重复申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        
+        if ($this->checkapplyFor(self::USER_TYPE_HC)) 
+        {
+            echo "<script>alert('您已申请过县域服务中心,不能申请此身份');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        $sid = $this->session->getId();
+        /*  清除 */
+        M\TmpFile::clearOld($sid);
+        $this->view->cateList = $cateList = M\Category::getTopCaetList();
+        $this->view->bankList = M\Bank::getBankList();
+        $this->view->imgtype = self::USER_PICTURE_PATH;
+        $this->view->sid = $sid;
+        $this->view->year = date('Y');
+        $this->view->title = '个人中心-村级服务站申请';
+    }
+    /**
+     * 村站申请
+     * @return [type] [description]
+     */
+    
+    public function villagesaveAction() 
+    {
+        
+        if (!$this->request->getPost()) 
+        {
+            $this->flash->error("数据错误!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $member_type              = $this->request->getPost('member_type', 'int', 0);
+        $user_province_id         = $this->request->getPost('user_province_id', 'int', 0);
+        $user_city_id             = $this->request->getPost('user_city_id', 'int', 0);
+        $user_district_id         = $this->request->getPost('user_district_id', 'int', 0);
+        $user_town_id             = $this->request->getPost('user_town_id', 'int', 0);
+        $user_area_province_id    = $this->request->getPost('user_area_province_id', 'int', 0);
+        $user_area_city_id        = $this->request->getPost('user_area_city_id', 'int', 0);
+        $user_area_district_id    = $this->request->getPost('user_area_district_id', 'int', 0);
+        $user_area_town_id        = $this->request->getPost('user_area_town_id', 'int', 0);
+        $user_bank_province_id    = $this->request->getPost('user_bank_province_id', 'int', 0);
+        $user_bank_city_id        = $this->request->getPost('user_bank_city_id', 'int', 0);
+        $user_bank_district_id    = $this->request->getPost('user_bank_district_id', 'int', 0);
+        $province_id              = $this->request->getPost('province_id', 'int', 0);
+        $city_id                  = $this->request->getPost('city_id', 'int', 0);
+        $district_id              = $this->request->getPost('district_id', 'int', 0);
+        $town_id                  = $this->request->getPost('town_id', 'int', 0);
+        $ent_area_province_id     = $this->request->getPost('ent_area_province_id', 'int', 0);
+        $ent_area_city_id         = $this->request->getPost('ent_area_city_id', 'int', 0);
+        $ent_area_district_id     = $this->request->getPost('ent_area_district_id', 'int', 0);
+        $ent_area_town_id         = $this->request->getPost('ent_area_town_id', 'int', 0);
+        $ent_bank_province_id     = $this->request->getPost('ent_bank_province_id', 'int', 0);
+        $ent_bank_city_id         = $this->request->getPost('ent_bank_city_id', 'int', 0);
+        $ent_bank_district_id     = $this->request->getPost('ent_bank_district_id', 'int', 0);
+        $user_name                = L\Validator::replace_specialChar($this->request->getPost('user_name', 'string', ''));
+        $user_credit_no           = L\Validator::replace_specialChar($this->request->getPost('user_credit_no', 'string', ''));
+        $user_mobile              = L\Validator::replace_specialChar($this->request->getPost('user_mobile', 'string', ''));
+        $user_address             = L\Validator::replace_specialChar($this->request->getPost('user_address', 'string', ''));
+        $user_bank_name           = L\Validator::replace_specialChar($this->request->getPost('user_bank_name', 'string', ''));
+        $user_bank_account        = L\Validator::replace_specialChar($this->request->getPost('user_bank_account', 'string', ''));
+        $user_bank_cardno         = L\Validator::replace_specialChar($this->request->getPost('user_bank_cardno', 'string', ''));
+        $ent_company_name         = L\Validator::replace_specialChar($this->request->getPost('ent_company_name', 'string', ''));
+        $ent_certificate_no       = L\Validator::replace_specialChar($this->request->getPost('ent_certificate_no', 'string', ''));
+        $ent_address              = L\Validator::replace_specialChar($this->request->getPost('ent_address', 'string', ''));
+        $ent_erprise_legal_person = L\Validator::replace_specialChar($this->request->getPost('ent_erprise_legal_person', 'string', ''));
+        $ent_contact_name         = L\Validator::replace_specialChar($this->request->getPost('ent_contact_name', 'string', ''));
+        $ent_contact_phone        = L\Validator::replace_specialChar($this->request->getPost('ent_contact_phone', 'string', ''));
+        $ent_contact_fax          = L\Validator::replace_specialChar($this->request->getPost('ent_contact_fax', 'string', ''));
+        $ent_bank_name            = L\Validator::replace_specialChar($this->request->getPost('ent_bank_name', 'string', ''));
+        $ent_bank_account         = L\Validator::replace_specialChar($this->request->getPost('ent_bank_account', 'string', ''));
+        $ent_bank_cardno          = L\Validator::replace_specialChar($this->request->getPost('ent_bank_cardno', 'string', ''));
+        $ent_register_no          = L\Validator::replace_specialChar($this->request->getPost('ent_register_no', 'string', ''));
+        $uid                      = $this->getUserID();
+        
+        if (!$uid) 
+        {
+            $this->flash->error("用户不存在!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $sid = $this->session->getId();
+        /**/
+        $info = M\Users::findFirst(" id ='{$uid}'");
+        
+        if (!$info) 
+        {
+            $this->flash->error("用户不村子啊!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $this->db->begin();
+        try
+        {
+            $UserInfo                          = new M\UserInfo();
+            $UserContact                       = new M\UserContact();
+            $UserBank                          = new M\UserBank();
+            $UserArea                          = new M\UserArea();
+            /* 用户基本信息 */
+            $UserInfo->user_id                 = $uid;
+            $UserInfo->type                    = $member_type;
+            $UserInfo->apply_time              = CURTIME;
+            $UserInfo->status                  = 0;
+            $UserInfo->certificate_no          = !$member_type ? $user_credit_no : $ent_certificate_no;
+            $UserInfo->phone                   = !$member_type ? $user_mobile : '';
+            $UserInfo->province_id             = !$member_type ? $user_province_id : $province_id;
+            $UserInfo->city_id                 = !$member_type ? $user_city_id : $city_id;
+            $UserInfo->district_id             = !$member_type ? $user_district_id : $district_id;
+            $UserInfo->town_id                 = !$member_type ? $user_town_id : $town_id;
+            $UserInfo->address                 = !$member_type ? $user_address : $ent_address;
+            $UserInfo->province_name           = M\AreasFull::getAreasNametoid($UserInfo->province_id);
+            $UserInfo->city_name               = M\AreasFull::getAreasNametoid($UserInfo->city_id);
+            $UserInfo->district_name           = M\AreasFull::getAreasNametoid($UserInfo->district_id);
+            $UserInfo->town_name               = M\AreasFull::getAreasNametoid($UserInfo->town_id);
+            $UserInfo->se_id                   = 0;
+            $UserInfo->credit_type             = self::USER_TYPE_VS;
+            $UserInfo->credit_no               = $this->getMemberNo($uid, self::USER_TYPE_VS);
+            $UserInfo->company_name            = $ent_company_name;
+            $UserInfo->enterprise_legal_person = $ent_erprise_legal_person;
+            $UserInfo->add_time                = CURTIME;
+            $UserInfo->last_update_time        = CURTIME;
+            $UserInfo->register_no             = $ent_register_no;
+            $UserInfo->name                    = !$member_type ? $user_name : '';
+            
+            $UserInfo->save();
+            $credit_id                         = $UserInfo->credit_id;
+            // $credit_id                      = 9;
+            /* 联系人 */
+            $UserContact->user_id              = $uid;
+            $UserContact->name                 = $ent_contact_name;
+            $UserContact->phone                = $ent_contact_phone;
+            $UserContact->fax                  = $ent_contact_fax;
+            $UserContact->add_time             = CURTIME;
+            $UserContact->last_update_time     = CURTIME;
+            $UserContact->credit_id            = $credit_id;
+            $UserContact->save();
+            /* 保存用户银行卡信息 */
+            $UserBank->user_id                 = $uid;
+            $bArea[]                           = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_province_id : $ent_bank_province_id);
+            $bArea[]                           = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_city_id : $ent_bank_city_id);
+            $bArea[]                           = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_district_id : $ent_bank_district_id);
+            $UserBank->bank_name               = !$member_type ? $user_bank_name : $ent_bank_name;
+            $UserBank->bank_address            = $bArea ? join(',', $bArea) : '';
+            $UserBank->bank_account            = !$member_type ? $user_bank_account : $ent_bank_account;
+            $UserBank->bank_cardno             = !$member_type ? $user_bank_cardno : $ent_bank_cardno;
+            $bankcard_picture                  = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '29' ");
+            $UserBank->bankcard_picture        = $bankcard_picture ? $bankcard_picture->file_path : '';
+            $idcard_picture                    = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '31' ");
+            $UserBank->idcard_picture          = $idcard_picture ? $idcard_picture->file_path : '';
+            $person_picture                    = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '30' ");
+            $UserBank->person_picture          = $person_picture ? $person_picture->file_path : '';
+            $identity_picture_lic              = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '33' ");
+            $UserBank->identity_picture_lic    = $identity_picture_lic ? $identity_picture_lic->file_path : '';
+            /* 身份证背面照 */
+            $idcard_picture_back               = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '34' ");
+            $UserBank->idcard_picture_back     = $idcard_picture_back ? $idcard_picture_back->file_path : '';
+            $UserBank->add_time                = CURTIME;
+            $UserBank->last_update_time        = CURTIME;
+            $UserBank->credit_id               = $credit_id;
+            $UserBank->save();
+            /* 保存服务区域 */
+            $UserArea->user_id                 = $uid;
+            $UserArea->province_id             = !$member_type ? $user_area_province_id : $ent_area_province_id;
+            $UserArea->city_id                 = !$member_type ? $user_area_city_id : $ent_area_city_id;
+            $UserArea->district_id             = !$member_type ? $user_area_district_id : $ent_area_district_id;
+            $UserArea->town_id                 = !$member_type ? $user_area_town_id : 0;
+            $UserArea->town_name               = M\AreasFull::getAreasNametoid($UserArea->town_id);
+            $UserArea->district_name           = M\AreasFull::getAreasNametoid($UserArea->district_id);
+            $UserArea->city_name               = M\AreasFull::getAreasNametoid($UserArea->city_id);
+            $UserArea->province_name           = M\AreasFull::getAreasNametoid($UserArea->province_id);
+            $UserArea->village_name            = '';
+            $UserArea->village_id              = 0;
+            $UserArea->add_time                = CURTIME;
+            $UserArea->last_update_time        = CURTIME;
+            $UserArea->credit_id               = $credit_id;
+            $UserArea->save();
+            /* 农场图片 */
+            $UserFarmPicture                   = new M\UserFarmPicture();
+            $UserFarmPicture->user_id          = $uid;
+            $picture_path                      = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '32' ");
+            $UserFarmPicture->picture_path     = $picture_path ? $picture_path->file_path : '';
+            $UserFarmPicture->add_time         = CURTIME;
+            $UserFarmPicture->credit_id        = $credit_id;
+            $UserFarmPicture->save();
+            
+           
+            $this->db->commit();
+        }
+        catch(\Exception $e) 
+        {
+            $this->db->rollback();
+            // print_R($e->getMessage());
+            
+        }
+        $this->response->redirect("userfarm/selectByApply")->sendHeaders();
+    }
+    /**
+     * 县站
+     * @return [type] [description]
+     */
+    
+    public function countyAction() 
+    {
+        /*  */
+        
+        if ($this->certcancel(self::USER_TYPE_HC)) 
+        {
+            echo "<script>alert('您的身份已被取消，不能再重复申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        /* 检测用户信息是否完整 */
+        
+        if ($this->checkUserInfo()) 
+        {
+            echo "<script>alert('您的用户信息不完整,请完善后再申请');location.href='/member/perfect/index';</script>";
+            exit;
+        }
+        
+        /*  检测用户是否申请 HC */
+        if ($this->checkapplyFor(self::USER_TYPE_HC)) 
+        {
+            echo "<script>alert('您已申请过此身份,不能重复申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        /* 检测用户是否申请村站 */
+        if ($this->checkapplyFor(self::USER_TYPE_VS,1)) 
+        {
+            echo "<script>alert('您已申请过村级服务中心,不能申请此身份');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        $sid = $this->session->getId();
+        /*  清除 */
+        M\TmpFile::clearOld($sid);
+        $this->view->cateList = $cateList = M\Category::getTopCaetList();
+        $this->view->bankList = M\Bank::getBankList();
+        $this->view->imgtype = self::USER_PICTURE_PATH;
+        $this->view->sid = $sid;
+        $this->view->year = date('Y');
+        $this->view->title = '个人中心-县域服务中心申请';
+    }
+    /**
+     * 县级保存
+     * @return [type] [description]
+     */
+    
+    public function countysaveAction() 
+    {
+        
+        if (!$this->request->getPost()) 
+        {
+            $this->flash->error("数据错误!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $member_type = $this->request->getPost('member_type', 'int', 0);
+        $user_province_id = $this->request->getPost('user_province_id', 'int', 0);
+        $user_city_id = $this->request->getPost('user_city_id', 'int', 0);
+        $user_district_id = $this->request->getPost('user_district_id', 'int', 0);
+        $user_town_id = $this->request->getPost('user_town_id', 'int', 0);
+        $user_area_province_id = $this->request->getPost('user_area_province_id', 'int', 0);
+        $user_area_city_id = $this->request->getPost('user_area_city_id', 'int', 0);
+        $user_area_district_id = $this->request->getPost('user_area_district_id', 'int', 0);
+        $user_area_town_id = $this->request->getPost('user_area_town_id', 'int', 0);
+        $user_bank_province_id = $this->request->getPost('user_bank_province_id', 'int', 0);
+        $user_bank_city_id = $this->request->getPost('user_bank_city_id', 'int', 0);
+        $user_bank_district_id = $this->request->getPost('user_bank_district_id', 'int', 0);
+        $province_id = $this->request->getPost('province_id', 'int', 0);
+        $city_id = $this->request->getPost('city_id', 'int', 0);
+        $district_id = $this->request->getPost('district_id', 'int', 0);
+        $town_id = $this->request->getPost('town_id', 'int', 0);
+        $ent_area_province_id = $this->request->getPost('ent_area_province_id', 'int', 0);
+        $ent_area_city_id = $this->request->getPost('ent_area_city_id', 'int', 0);
+        $ent_area_district_id = $this->request->getPost('ent_area_district_id', 'int', 0);
+        $ent_area_town_id = $this->request->getPost('ent_area_town_id', 'int', 0);
+        $ent_bank_province_id = $this->request->getPost('ent_bank_province_id', 'int', 0);
+        $ent_bank_city_id = $this->request->getPost('ent_bank_city_id', 'int', 0);
+        $ent_bank_district_id = $this->request->getPost('ent_bank_district_id', 'int', 0);
+        $user_name = L\Validator::replace_specialChar($this->request->getPost('user_name', 'string', ''));
+        $user_credit_no = L\Validator::replace_specialChar($this->request->getPost('user_credit_no', 'string', ''));
+        $user_mobile = L\Validator::replace_specialChar($this->request->getPost('user_mobile', 'string', ''));
+        $user_address = L\Validator::replace_specialChar($this->request->getPost('user_address', 'string', ''));
+        $user_bank_name = L\Validator::replace_specialChar($this->request->getPost('user_bank_name', 'string', ''));
+        $user_bank_account = L\Validator::replace_specialChar($this->request->getPost('user_bank_account', 'string', ''));
+        $user_bank_cardno = L\Validator::replace_specialChar($this->request->getPost('user_bank_cardno', 'string', ''));
+        $ent_company_name = L\Validator::replace_specialChar($this->request->getPost('ent_company_name', 'string', ''));
+        $ent_certificate_no = L\Validator::replace_specialChar($this->request->getPost('ent_certificate_no', 'string', ''));
+        $ent_address = L\Validator::replace_specialChar($this->request->getPost('ent_address', 'string', ''));
+        $ent_erprise_legal_person = L\Validator::replace_specialChar($this->request->getPost('ent_erprise_legal_person', 'string', ''));
+        $ent_contact_name = L\Validator::replace_specialChar($this->request->getPost('ent_contact_name', 'string', ''));
+        $ent_contact_phone = L\Validator::replace_specialChar($this->request->getPost('ent_contact_phone', 'string', ''));
+        $ent_contact_fax = L\Validator::replace_specialChar($this->request->getPost('ent_contact_fax', 'string', ''));
+        $ent_bank_name = L\Validator::replace_specialChar($this->request->getPost('ent_bank_name', 'string', ''));
+        $ent_bank_account = L\Validator::replace_specialChar($this->request->getPost('ent_bank_account', 'string', ''));
+        $ent_bank_cardno = L\Validator::replace_specialChar($this->request->getPost('ent_bank_cardno', 'string', ''));
+        $uid = $this->getUserID();
+        $seusername = L\Validator::replace_specialChar($this->request->getPost('seusername', 'string', ''));
+        $ent_register_no = L\Validator::replace_specialChar($this->request->getPost('ent_register_no', 'string', ''));
+        $seid = $this->request->getPost('seid', 'int', 0);
+        $county = array();
+        
+        if (!$uid) 
+        {
+            $this->flash->error("用户信息不存在!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $sid = $this->session->getId();
+        /**/
+        $info = M\Users::findFirst(" id ='{$uid}'");
+        
+        if (!$info) 
+        {
+            $this->flash->error("用户信息不存在!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $this->db->begin();
+        try
+        {
+            /**/
+            $client = L\Func::serviceApi();
+            
+            if (!$member_type) 
+            {
+                $county = $client->county_selectByMobile($seusername);
+            }
+            else
+            {
+                $county = $client->county_selectByservice_bianhao($seid);
+            }
+            // $data = json_decode($county);
+            
+            $UserInfo = new M\UserInfo();
+            $UserContact = new M\UserContact();
+            $UserBank = new M\UserBank();
+            $UserArea = new M\UserArea();
+            /* 用户基本信息 */
+            $UserInfo->user_id = $uid;
+            $UserInfo->type = $member_type;
+            $UserInfo->apply_time = CURTIME;
+            $UserInfo->status = 0;
+            $UserInfo->certificate_no = !$member_type ? $user_credit_no : $ent_certificate_no;
+            $UserInfo->phone = !$member_type ? $user_mobile : '';
+            $UserInfo->province_id = !$member_type ? $user_province_id : $province_id;
+            $UserInfo->city_id = !$member_type ? $user_city_id : $city_id;
+            $UserInfo->district_id = !$member_type ? $user_district_id : $district_id;
+            $UserInfo->town_id = !$member_type ? $user_town_id : $town_id;
+            $UserInfo->address = !$member_type ? $user_address : $ent_address;
+            $UserInfo->province_name = M\AreasFull::getAreasNametoid($UserInfo->province_id);
+            $UserInfo->city_name = M\AreasFull::getAreasNametoid($UserInfo->city_id);
+            $UserInfo->district_name = M\AreasFull::getAreasNametoid($UserInfo->district_id);
+            $UserInfo->town_name = M\AreasFull::getAreasNametoid($UserInfo->town_id);
+            $UserInfo->se_id = isset($county['county_id']) ? intval($county['county_id']) : 0;
+            $UserInfo->credit_type = self::USER_TYPE_HC;
+            $UserInfo->credit_no = $this->getMemberNo($uid, self::USER_TYPE_HC);
+            $UserInfo->company_name = $ent_company_name;
+            $UserInfo->enterprise_legal_person = $ent_erprise_legal_person;
+            $UserInfo->add_time = CURTIME;
+            $UserInfo->last_update_time = CURTIME;
+            $UserInfo->register_no = $ent_register_no;
+            $UserInfo->name = !$member_type ? $user_name : '';
+            $UserInfo->save();
+            $credit_id = $UserInfo->credit_id;
+            /* 联系人 */
+            $UserContact->user_id = $uid;
+            $UserContact->name = $ent_contact_name;
+            $UserContact->phone = $ent_contact_phone;
+            $UserContact->fax = $ent_contact_fax;
+            $UserContact->add_time = CURTIME;
+            $UserContact->last_update_time = CURTIME;
+            $UserContact->credit_id = $credit_id;
+            $UserContact->save();
+            /* 保存用户银行卡信息 */
+            $UserBank->user_id = $uid;
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_province_id : $ent_bank_province_id);
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_city_id : $ent_bank_city_id);
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $user_bank_district_id : $ent_bank_district_id);
+            $UserBank->bank_name = !$member_type ? $user_bank_name : $ent_bank_name;
+            $UserBank->bank_address = $bArea ? join(',', $bArea) : '';
+            $UserBank->bank_account = !$member_type ? $user_bank_account : $ent_bank_account;
+            $UserBank->bank_cardno = !$member_type ? $user_bank_cardno : $ent_bank_cardno;
+            $bankcard_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '29' ");
+            $UserBank->bankcard_picture = $bankcard_picture ? $bankcard_picture->file_path : '';
+            $idcard_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '31' ");
+            $UserBank->idcard_picture = $idcard_picture ? $idcard_picture->file_path : '';
+            $person_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '30' ");
+            $UserBank->person_picture = $person_picture ? $person_picture->file_path : '';
+            $identity_picture_lic = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '33' ");
+            $UserBank->identity_picture_lic = $identity_picture_lic ? $identity_picture_lic->file_path : '';
+            /* 身份证背面照 */
+            $idcard_picture_back = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '34' ");
+            $UserBank->idcard_picture_back = $idcard_picture_back ? $idcard_picture_back->file_path : '';
+            $UserBank->add_time = CURTIME;
+            $UserBank->last_update_time = CURTIME;
+            $UserBank->credit_id = $credit_id;
+            $UserBank->save();
+            /* 保存服务区域 */
+            $UserArea->user_id = $uid;
+            $UserArea->province_id = !$member_type ? $user_area_province_id : $ent_area_province_id;
+            $UserArea->city_id = !$member_type ? $user_area_city_id : $ent_area_city_id;
+            $UserArea->district_id = !$member_type ? $user_area_district_id : $ent_area_district_id;
+            $UserArea->town_id = !$member_type ? $user_area_town_id : $ent_area_town_id;
+            $UserArea->town_name = M\AreasFull::getAreasNametoid($UserArea->town_id);
+            $UserArea->district_name = M\AreasFull::getAreasNametoid($UserArea->district_id);
+            $UserArea->city_name = M\AreasFull::getAreasNametoid($UserArea->city_id);
+            $UserArea->province_name = M\AreasFull::getAreasNametoid($UserArea->province_id);
+            $UserArea->village_name = '';
+            $UserArea->village_id = 0;
+            $UserArea->add_time = CURTIME;
+            $UserArea->last_update_time = CURTIME;
+            $UserArea->credit_id = $credit_id;
+            $UserArea->save();
+     
+            $this->db->commit();
+        }
+        catch(\Exception $e) 
+        {
+            $this->db->rollback();
+            // print_R($e->getMessage());
+            
+        }
+        $this->response->redirect("userfarm/selectByApply")->sendHeaders();
+    }
+    /**
+     * 用户申请
+     * @return [type] [description]
+     */
+    
+    public function userAction() 
+    {
+        /*  */
+        
+        if ($this->certcancel(self::USER_TYPE_IF)) 
+        {
+            echo "<script>alert('您的身份已被取消，不能再重复申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        /* 检测用户信息是否完整 */
+        
+        if ($this->checkUserInfo()) 
+        {
+            echo "<script>alert('您的用户信息不完整,请完善后再申请');location.href='/member/perfect/index';</script>";
+            exit;
+        }
+        // /* 检测用户是否申请村站 */
+        
+        if ($this->checkapplyFor(self::USER_TYPE_IF)) 
+        {
+            echo "<script>alert('您已申请过此身份,不能重复申请');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        $sid = $this->session->getId();
+        /*  清除 */
+        M\TmpFile::clearOld($sid);
+        $this->view->cateList = $cateList = M\Category::getTopCaetList();
+        $this->view->bankList = M\Bank::getBankList();
+        $this->view->imgtype = self::USER_PICTURE_PATH;
+        $this->view->sid = $sid;
+        $this->view->year = date('Y');
+        $this->view->maxyear = 100;
+        $this->view->title = '个人中心-可信农场申请';
+    }
+    /**
+     * 用户申请保存
+     * @return [type] [description]
+     */
+    
+    public function usersaveAction() 
+    {
+        
+        if (!$this->request->getPost()) 
+        {
+            $this->flash->error("来源错误!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $uid = $this->getUserID();
+        $year = $this->request->getPost('year', 'int', 0);
+        $month = $this->request->getPost('month', 'int', 0);
+        $member_type = $this->request->getPost('member_type', 'int', 0);
+        $bank_province_id = $this->request->getPost('bank_province_id', 'int', 0);
+        $bank_city_id = $this->request->getPost('bank_city_id', 'int', 0);
+        $bank_district_id = $this->request->getPost('bank_district_id', 'int', 0);
+        $user_province_id = $this->request->getPost('user_province_id', 'int', 0);
+        $user_city_id = $this->request->getPost('user_city_id', 'int', 0);
+        $user_district_id = $this->request->getPost('user_district_id', 'int', 0);
+        $user_town_id = $this->request->getPost('user_town_id', 'int', 0);
+        $user_village_id = $this->request->getPost('user_village_id', 'int', 0);
+        $ent_province_id = $this->request->getPost('ent_province_id', 'int', 0);
+        $ent_city_id = $this->request->getPost('ent_city_id', 'int', 0);
+        $ent_district_id = $this->request->getPost('ent_district_id', 'int', 0);
+        $ent_town_id = $this->request->getPost('ent_town_id', 'int', 0);
+        $ent_bank_city_id = $this->request->getPost('ent_bank_city_id', 'int', 0);
+        $ent_bank_district_id = $this->request->getPost('ent_bank_district_id', 'int', 0);
+        $ent_village_id = $this->request->getPost('ent_village_id', 'int', 0);
+        $source = $this->request->getPost('source', 'int', 0);
+        $ent_bank_province_id = $this->request->getPost('ent_bank_province_id', 'int', 0);
+        $ent_source = $this->request->getPost('ent_source', 'int', 0);
+        $name = L\Validator::replace_specialChar($this->request->getPost('name', 'string', ''));
+        $credit_no = L\Validator::replace_specialChar($this->request->getPost('credit_no', 'string', ''));
+        $mobile = L\Validator::replace_specialChar($this->request->getPost('mobile', 'string', ''));
+        $user_bank_name = L\Validator::replace_specialChar($this->request->getPost('user_bank_name', 'string', ''));
+        $bank_account = L\Validator::replace_specialChar($this->request->getPost('bank_account', 'string', ''));
+        $bank_cardno = L\Validator::replace_specialChar($this->request->getPost('bank_cardno', 'string', ''));
+        $farm_name = L\Validator::replace_specialChar($this->request->getPost('farm_name', 'string', ''));
+        $user_address = L\Validator::replace_specialChar($this->request->getPost('user_address', 'string', ''));
+        $farm_areas = L\Validator::replace_specialChar($this->request->getPost('farm_areas', 'string', ''));
+        $category_name = L\Validator::replace_specialChar($this->request->getPost('category_name', 'string', ''));
+        $category_name_text_0 = trim($this->request->getPost('category_name_text_0', 'string', '') , ',');
+        $category_name_text_1 = trim($this->request->getPost('category_name_text_1', 'string', '') , ',');
+        $user_describe = L\Validator::replace_specialChar($this->request->getPost('user_describe', 'string', ''));
+        $ent_company_name = L\Validator::replace_specialChar($this->request->getPost('ent_company_name', 'string', ''));
+        $ent_certificate_no = L\Validator::replace_specialChar($this->request->getPost('ent_certificate_no', 'string', ''));
+        $ent_address = L\Validator::replace_specialChar($this->request->getPost('ent_address', 'string', ''));
+        $ent_erprise_legal_person = L\Validator::replace_specialChar($this->request->getPost('ent_erprise_legal_person', 'string', ''));
+        $ent_contact_name = L\Validator::replace_specialChar($this->request->getPost('ent_contact_name', 'string', ''));
+        $ent_contact_phone = L\Validator::replace_specialChar($this->request->getPost('ent_contact_phone', 'string', ''));
+        $ent_contact_fax = L\Validator::replace_specialChar($this->request->getPost('ent_contact_fax', 'string', ''));
+        $ent_bank_name = L\Validator::replace_specialChar($this->request->getPost('ent_bank_name', 'string', ''));
+        $ent_bank_account = L\Validator::replace_specialChar($this->request->getPost('ent_bank_account', 'string', ''));
+        $ent_bank_cardno = L\Validator::replace_specialChar($this->request->getPost('ent_bank_cardno', 'string', ''));
+        $ent_farm_name = L\Validator::replace_specialChar($this->request->getPost('ent_farm_name', 'string', ''));
+        $ent_farm_area = L\Validator::replace_specialChar($this->request->getPost('ent_farm_area', 'string', ''));
+        $ent_month = L\Validator::replace_specialChar($this->request->getPost('ent_month', 'string', ''));
+        $ent_describe = L\Validator::replace_specialChar($this->request->getPost('ent_describe', 'string', ''));
+        /* 公司基本信息 */
+        $province_id = $this->request->getPost('province_id', 'int', 0);
+        $city_id = $this->request->getPost('city_id', 'int', 0);
+        $district_id = $this->request->getPost('district_id', 'int', 0);
+        $town_id = $this->request->getPost('town_id', 'int', 0);
+        $address = L\Validator::replace_specialChar($this->request->getPost('address', 'string', ''));
+        $ent_register_no = L\Validator::replace_specialChar($this->request->getPost('ent_register_no', 'string', ''));
+        $ent_year = L\Validator::replace_specialChar($this->request->getPost('ent_year', 'string', ''));
+        $category_name_text = !$member_type ? $category_name_text_0 : $category_name_text_1;
+        $sid = $this->session->getId();
+        
+        /**/
+        $info = M\Users::findFirst(" id ='{$uid}'");
+
+        /* 检测用户是否申请农场 */
+        if ($this->checkapplyFor(self::USER_TYPE_IF,0)) 
+        {
+            echo "<script>alert('该用户已申请可信农场');location.href='/member/userfarm/index';</script>";
+            exit;
+        }
+        
+        if (!$info) 
+        {
+            $this->flash->error("用户不存在!");
+            return $this->dispatcher->forward(array(
+                "controller" => "userfarm",
+                "action" => "index",
+            ));
+        }
+        $this->db->begin();
+        try
+        {
+            $UserFarm = new M\UserFarm();
+            $UserInfo = new M\UserInfo();
+            $UserContact = new M\UserContact();
+            $UserBank = new M\UserBank();
+            /* 用户基本信息 */
+            $UserInfo->user_id = $uid;
+            $UserInfo->type = $member_type;
+            $UserInfo->apply_time = CURTIME;
+            $UserInfo->status = 0;
+            $UserInfo->certificate_no = !$member_type ? $credit_no : $ent_certificate_no;
+            $UserInfo->phone = !$member_type ? $mobile : '';
+            $UserInfo->province_id = $member_type ? $province_id : 0;
+            $UserInfo->city_id = $member_type ? $city_id : 0;
+            $UserInfo->district_id = $member_type ? $district_id : 0;
+            $UserInfo->town_id = $member_type ? $town_id : 0;
+            $UserInfo->address = $address;
+            $UserInfo->province_name = M\AreasFull::getAreasNametoid($UserInfo->province_id);
+            $UserInfo->city_name = M\AreasFull::getAreasNametoid($UserInfo->city_id);
+            $UserInfo->district_name = M\AreasFull::getAreasNametoid($UserInfo->district_id);
+            $UserInfo->town_name = M\AreasFull::getAreasNametoid($UserInfo->town_id);
+            $UserInfo->se_id = 0;
+            $UserInfo->credit_type = self::USER_TYPE_IF;
+            $UserInfo->credit_no = $this->getMemberNo($uid, self::USER_TYPE_IF);
+            $UserInfo->company_name = $ent_company_name;
+            $UserInfo->enterprise_legal_person = $ent_erprise_legal_person;
+            $UserInfo->add_time = CURTIME;
+            $UserInfo->last_update_time = CURTIME;
+            $UserInfo->register_no = $ent_register_no;
+            $UserInfo->name = $name;
+            $UserInfo->save();
+            $credit_id = $UserInfo->credit_id;
+            // $credit_id = 3;
+            /* 联系人 */
+            $UserContact->user_id = $uid;
+            $UserContact->name = $ent_contact_name;
+            $UserContact->phone = $ent_contact_phone;
+            $UserContact->fax = $ent_contact_fax;
+            $UserContact->add_time = CURTIME;
+            $UserContact->last_update_time = CURTIME;
+            $UserContact->credit_id = $credit_id;
+            $UserContact->save();
+            /* 农场信息 */
+            $UserFarm->user_id = $uid;
+            $UserFarm->farm_name = !$member_type ? $farm_name : $ent_farm_name;
+            $UserFarm->province_id = !$member_type ? $user_province_id : $ent_province_id;
+            $UserFarm->city_id = !$member_type ? $user_city_id : $ent_city_id;
+            $UserFarm->district_id = !$member_type ? $user_district_id : $ent_district_id;
+            $UserFarm->town_id = !$member_type ? $user_town_id : $ent_town_id;
+            $UserFarm->village_id = !$member_type ? $user_village_id : $ent_village_id;
+            $UserFarm->province_name = M\AreasFull::getAreasNametoid($UserFarm->province_id);
+            $UserFarm->city_name = M\AreasFull::getAreasNametoid($UserFarm->city_id);
+            $UserFarm->district_name = M\AreasFull::getAreasNametoid($UserFarm->district_id);
+            $UserFarm->town_name = M\AreasFull::getAreasNametoid($UserFarm->town_id);
+            $UserFarm->village_name = M\AreasFull::getAreasNametoid($UserFarm->village_id);
+            $UserFarm->address = $ent_address;
+            $UserFarm->farm_area = !$member_type ? $farm_areas : $ent_farm_area;
+            $UserFarm->source = !$member_type ? $source : $ent_source;
+            $UserFarm->year = !$member_type ? $year : $ent_year;
+            $UserFarm->month = !$member_type ? $month : $ent_month;
+            $UserFarm->describe = !$member_type ? $user_describe : $ent_describe;
+            $UserFarm->add_time = CURTIME;
+            $UserFarm->last_update_time = CURTIME;
+            $UserFarm->credit_id = $credit_id;
+            $UserFarm->save();
+            /* 保存用户银行卡信息 */
+            $UserBank->user_id = $uid;
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $bank_province_id : $ent_bank_province_id);
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $bank_city_id : $ent_bank_city_id);
+            $bArea[] = M\AreasFull::getAreasNametoid(!$member_type ? $bank_district_id : $ent_bank_district_id);
+            $UserBank->bank_name = !$member_type ? $user_bank_name : $ent_bank_name;
+            $UserBank->bank_address = $bArea ? join(',', $bArea) : '';
+            $UserBank->bank_account = !$member_type ? $bank_account : $ent_bank_account;
+            $UserBank->bank_cardno = !$member_type ? $bank_cardno : $ent_bank_cardno;
+            $bankcard_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '29' ");
+            $UserBank->bankcard_picture = $bankcard_picture ? $bankcard_picture->file_path : '';
+            $idcard_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '31' ");
+            $UserBank->idcard_picture = $idcard_picture ? $idcard_picture->file_path : '';
+            $person_picture = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '30' ");
+            $UserBank->person_picture = $person_picture ? $person_picture->file_path : '';
+            /* 营业执照 */
+            $identity_picture_lic = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '33' ");
+            $UserBank->identity_picture_lic = $identity_picture_lic ? $identity_picture_lic->file_path : '';
+            /* 身份证背面照 */
+            $idcard_picture_back = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '34' ");
+            $UserBank->idcard_picture_back = $idcard_picture_back ? $idcard_picture_back->file_path : '';
+            $UserBank->add_time = CURTIME;
+            $UserBank->last_update_time = CURTIME;
+            $UserBank->credit_id = $credit_id;
+            $UserBank->save();
+            /* 保存农作物信息 */
+            
+            if ($category_name_text) 
+            {
+                $category_name_text = array_unique(explode(',', $category_name_text));
+                
+                foreach ($category_name_text as $key => $val) 
+                {
+                    /* 检测分类是否存在 */
+                    $cid = intval($val);
+                    
+                    if (!$cate = M\Category::findFirst(" id = '{$cid}' AND parent_id > 0 ")) continue;
+                    $UserFarmCrops = new M\UserFarmCrops();
+                    $UserFarmCrops->user_id = $uid;
+                    $UserFarmCrops->category_name = $cate->title;
+                    $UserFarmCrops->add_time = CURTIME;
+                    $UserFarmCrops->category_id = intval($cate->id);
+                    $UserFarmCrops->credit_id = $credit_id;
+                    $UserFarmCrops->save();
+                }
+            }
+            /* 农场图片 */
+            $UserFarmPicture = new M\UserFarmPicture();
+            $UserFarmPicture->user_id = $uid;
+            $picture_path = M\TmpFile::findFirst(" sid = '{$sid}' AND type = '32' ");
+            $UserFarmPicture->picture_path = $picture_path ? $picture_path->file_path : '';
+            $UserFarmPicture->add_time = CURTIME;
+            $UserFarmPicture->credit_id = $credit_id;
+            $UserFarmPicture->save();
+            
+
+            $this->db->commit();
+        }
+        catch(\Exception $e) 
+        {
+            $this->db->rollback();
+        }
+        $this->response->redirect("userfarm/selectByApply")->sendHeaders();
+    }
+
+    /**
+     * 验证村站服务区域
+     * @return [type] [description]
+     */
+    public function checkAreaVillageAction () {
+        $user_area_town_id = $this->request->getPost('user_area_town_id', 'int', 0 );
+        $ent_area_town_id = $this->request->getPost('ent_area_town_id', 'int', 0 );
+        $tid = 0;
+        if($user_area_town_id) $tid =$user_area_town_id;
+        if($ent_area_town_id) $tid = $ent_area_town_id;
+        
+        $msg = array(
+            'ok' => ''
+        );
+        if(!$tid) {
+            $msg = array(
+                'error' => '参数错误'
+            );
+            exit(json_encode($msg));
+        }
+
+        $where = "  ua.town_id  = '{$tid}' ";
+        $credit_type = self::USER_TYPE_VS;
+        $where .= "  AND 1 AND u.credit_type = '{$credit_type}'  AND u.status IN (0,1) ";
+        $sql = " SELECT ua.credit_id  FROM `user_info` AS u , `user_area` AS ua WHERE ua.`credit_id` =  u.`credit_id` AND  {$where}  ";
+        $area = $this->db->fetchAll($sql,2);
+        if(!$area) {
+            exit(json_encode($msg));
+        }
+        $msg = array(
+            'error' => '地区已有人负责'
+        );
+        exit(json_encode($msg));
+    }
+    /**
+     * 检测用户服务区域
+     * @param  integer $aid 区域id
+     * @return [type]       [description]
+     */
+    
+    public function checkUserFarmAreaAction($aid = 0) 
+    {
+        $uid = $this->getUserID();
+
+        $user_area_district_id = $this->request->getPost('user_area_district_id', 'int', 0);
+        $ent_area_district_id = $this->request->getPost('ent_area_district_id', 'int', 0);
+        $tid = 0 ;
+        if($user_area_district_id) $tid = $user_area_district_id;
+        if($ent_area_district_id) $tid = $ent_area_district_id;
+
+        $msg = array(
+            'ok' => ''
+        );
+        if(!$tid) {
+            $msg = array(
+                'error' => '参数错误'
+            );
+            exit(json_encode($msg));
+        }
+
+        $credit_type = self::USER_TYPE_HC;
+        $where = " ua.district_id = '{$tid}' ";
+        $where .= "  AND 1 AND u.credit_type = '{$credit_type}'  AND u.status IN (0,1) ";
+
+        $sql = " SELECT ua.credit_id  FROM `user_info` AS u , `user_area` AS ua WHERE ua.`credit_id` =  u.`credit_id` AND  {$where}  ";
+        
+        $area = $this->db->fetchAll($sql,2);
+        if(!$area) {
+            exit(json_encode($msg));
+        }
+        
+        $msg = array(
+            'error' => '地区已有人负责'
+        );
+        exit(json_encode($msg));
+        
+    }
+    
+    private function getMemberNo($uid = 0, $type = 0) 
+    {
+        $no = '';
+        
+        switch ($type) 
+        {
+        case self::USER_TYPE_HC:
+            $no = 'HC' . $uid . L\Func::random(3, 1);
+            break;
+
+        case self::USER_TYPE_VS:
+            $no = 'VS' . $uid . L\Func::random(3, 1);
+            break;
+
+        case self::USER_TYPE_IF:
+            $no = 'IF' . $uid . L\Func::random(3, 1);
+            break;
+
+        case self::USER_TYPE_PE:
+            $no = 'PE' . $uid . L\Func::random(3, 1);
+            break;
+        }
+        return $no;
+    }
+    /**
+     * 检测用户申请类型
+     * @param  [type] $type 类型
+     * @return boolean
+     */
+    
+    private function checkapplyFor($type = 0, $membertype = 0) 
+    {
+        $uid = $this->getUserID();
+        $where = " 1 ";
+        
+        if (!$membertype) 
+        {
+            $where.= "   AND status in(0,1,3) ";
+        }
+
+
+        $info = M\UserInfo::count(" {$where} AND (user_id = '{$uid}' AND credit_type = '{$type}'  ) ");
+
+        return $membertype ? ($info ? ($info - 1) : 0  ) : $info;
+    }
+    /**
+     * 检测用户是否有身份证正在申请中
+     * @param  [type] $type [description]
+     * @return [type]       [description]
+     */
+    
+    private function checkapplication($type = 0) 
+    {
+        $uid = $this->getUserID();
+        $info = M\UserInfo::count(" (user_id = '{$uid}'  AND status =  '0' ) ");
+        return $info;
+    }
+    /**
+     * 检测身份是否被取消
+     * @param  integer $type 类型
+     * @return [type]        [description]
+     */
+    
+    private function certcancel($type = 0) 
+    {
+        $uid = $this->getUserID();
+        $info = M\UserInfo::count(" (user_id = '{$uid}'  AND credit_type = '{$type}' AND status =  '3' ) ");
+        return $info;
+    }
+}
+?>

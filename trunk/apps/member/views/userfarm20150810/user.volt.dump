@@ -1,0 +1,622 @@
+<!--头部 start-->
+{{ partial('layouts/page_header') }}
+<!--头部 end-->
+
+<!--主体 start-->
+<div class="center-wrapper pb30">
+	<div class="bread-crumbs w1185 mtauto">
+		<a href="/">首页</a>
+		>
+		<a href="/member">个人中心</a>
+		> 可信农场
+	</div>
+	<div class="w1185 mtauto clearfix">
+		<!-- 左侧 start-->
+		{{ partial('layouts/navs_left') }}
+		<!-- 左侧 end-->
+		<form action="/member/userfarm/usersave" method="post" id='userForm'>
+			<!-- 右侧 -->
+			<div class="center-right f-fr">
+				<div class="form-attest">
+					<div class="title">申请表单</div>
+					<div class="box">
+
+						<div class="m-title">基本信息</div>
+						<div class="message clearfix"> <font>您的身份</font>
+							<div class="radio-box buyer-input">
+								<label>
+									<input type="radio" name='member_type' value='' checked> <em>农户</em>
+								</label>
+								<label>
+									<input type="radio" name='member_type'> <em>农业企业</em>
+								</label>
+								<label>
+									<input type="radio" name='member_type' value='' >
+									<em>家庭农场</em>
+								</label>
+
+								<label>
+									<input type="radio" name='member_type' value='' >
+									<em>农业合作社</em>
+								</label>
+						
+						</div>
+					</div>
+					<!-- 可信农场 农户 -->
+					<div class="buyer-common" style="display:block;">
+
+						<div class="message clearfix"> <font>姓名</font>
+							<div class="input-box">
+								<input type="text" name='name' value='' />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>身份证号</font>
+							<div class="input-box">
+								<input type="text" name='credit_no' value=''  />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>手机号</font>
+							<div class="input-box">
+								<input type="text" name='mobile'  value='' />
+							</div>
+						</div>
+						<div class="m-title mt20">认证信息</div>
+						<div class="message clearfix">
+							<font>银行卡开户行</font>
+							<div class="select-box lang-select" >
+								<select name='user_bank_name' >
+									<option value=''>请选择</option>
+									{% for key , item in  bankList %}
+									<option value='{{ item['gate_id']}}'>{{ item['bank_name']}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>开户行所在地</font>
+							<div class="select-box lang-select">
+								<select name='bank_province_id' class='class_bank_address'>
+									<option>请选择</option>
+								</select>
+								<select name='bank_city_id'  class='class_bank_address' >
+									<option>请选择</option>
+								</select>
+								<select name='bank_district_id'  class='class_bank_address' >
+									<option>请选择</option>
+								</select>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>开户名</font>
+							<div class="input-box">
+								<input type="text" name='bank_account' id='bank_account' />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>卡号</font>
+							<div class="input-box">
+								<input type="text" name='bank_cardno' />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>银行卡证明照</font>
+							<div class="loadImg-box">
+								<div class="imgs" id='show_user_bankcard_picture'>
+									<img src="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg" height="145" width="120"></div>
+								<div class="file-btn">
+									<input class="btn1" type="button" value="上传图片" />
+									<input class="btn2" type="file" name='user_bankcard_picture' id='user_bankcard_picture'/>
+									<a target="_blank" href="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg">查看样照</a>
+								</div>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>个人手持身份证照片</font>
+							<div class="loadImg-box">
+								<div class="imgs" id='show_user_person_picture'>
+									<img src="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg" height="145" width="120"></div>
+								<div class="file-btn">
+									<input class="btn1" type="button" value="上传图片" />
+									<input class="btn2" type="file"  name='user_person_picture' id='user_person_picture'/>
+									<a target="_blank" href="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg">查看样照</a>
+								</div>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>身份证照</font>
+							<div class="loadImg-box">
+								<div class="imgs" id='show_user_idcard_picture'>
+									<img src="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg" height="145" width="120"></div>
+								<div class="file-btn">
+									<input class="btn1" type="button" value="上传图片" />
+									<input class="btn2" type="file" name='user_idcard_picture' id='user_idcard_picture' />
+									<a target="_blank" href="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg">查看样照</a>
+								</div>
+							</div>
+						</div>
+						<div class="m-title mt20">农场信息</div>
+						<div class="message clearfix">
+							<font>农场名</font>
+							<div class="input-box">
+								<input type="text" name='farm_name' id='farm_name'/>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>农场地址</font>
+							<div class="select-box" >
+								<select name='user_province_id'  class='selectAreas'>
+									<option value=''>请选择</option>
+								</select>
+								<select name='user_city_id'  class='selectAreas' >
+									<option value=''>请选择</option>
+								</select >
+								<select name='user_district_id'  class='selectAreas' >
+									<option value=''>请选择</option>
+								</select>
+								<select name='user_town_id'  class='selectAreas' >
+									<option value=''>请选择</option>
+								</select>
+								<select name='user_village_id'  class='selectAreas' >
+									<option value=''>请选择</option>
+								</select>
+								<input class="f-db" type="text" name='user_address' id='user_address' />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>农场面积</font>
+							<div class="input-box short-input">
+								<input type="text" name='farm_areas'/> <i>亩</i>
+							</div>
+						</div>
+
+						<div class="message clearfix">
+							<font>种植作物</font>
+							<div class="select-box lang-select clearfix categrey-option">
+								<div class="choose-box f-fl">
+									<select name='category_name' onchange="selectBycate(this.value)">
+										{% for key , item in cateList %}
+										<option value="{{ item.id }}">{{ item.title}}</option>
+										{% endfor %}
+									</select>
+									<div class="erji-box" id='show_cate_chid'></div>
+								</div>
+								<div class="btn-box f-fl">
+									<a class="btn1" href="javascript:;">添加</a>
+									<a class="btn2" href="javascript:;">删除</a>
+								</div>
+								<div class="result-box f-fl"></div>
+							</div>
+							<input type="hidden" name='category_name_text' value=''></div>
+						<div class="message clearfix">
+							<font>农场照片</font>
+							<div class="loadImg-box">
+								<div class="imgs" id='show_picture_path'>
+									<img src="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg" height="145" width="120">
+									<a class="close-img" href="javascript:;">删除</a>
+								</div>
+								<div class="file-btn">
+									<input class="btn1" type="button" value="上传图片" />
+									<input class="btn2" type="file"  name='picture_path' id='picture_path' /> <i>（选填）</i>
+								</div>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>土地来源</font>
+							<div class="radio-box buyer-input">
+								<label>
+									<input type="radio" name='source' value='0' checked>
+									<em>自有</em>
+								</label>
+								<label>
+									<input type="radio" name='source' value='1' >
+									<em>流转</em>
+								</label>
+							</div>
+						</div>
+
+						<div class="message clearfix">
+							<font>土地使用年限</font>
+							<div class="select-box" name='year'>
+								<select name='year'>
+									<?php for($i=$year; $i<=$year + 10 ; $i++ ) {?>
+									<option value='{{ i }}'>
+										<?php echo $i;?></option>
+									<?php } ?></select>
+								<i>年</i>
+								<select name='month'>
+									<?php for($i=1; $i<=12 ; $i++ ) {?>
+									<option value='{{ i }}'>
+										<?php echo $i;?></option>
+									<?php } ?></select>
+								<i>月</i>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>农场简介</font>
+							<div class="textarea-box">
+								<textarea name='describe' ></textarea>
+								<i>（选填）</i>
+							</div>
+						</div>
+
+					</div>
+
+					<script type="text/javascript">
+
+$('#userForm').validator({
+    //自定义用于当前实例的规则
+    rules: {
+        category_name: function(element, params){
+            alert(element)
+        }
+    },
+    fields: {
+        category_name: 'required;',
+       
+    },
+   
+});
+
+$(function () {
+
+
+	bankImg($('#user_person_picture'), 2, $('#show_user_person_picture') , 'html');
+	bankImg($('#user_bankcard_picture'), 2, $('#show_user_bankcard_picture') , 'html');
+	// bankImg($('#user_bankcard_picture'), 2, $('#show_user_bankcard_picture') , 'html');
+	bankImg($('#user_idcard_picture'), 3, $('#show_user_idcard_picture') , 'html');
+	bankImg($('#picture_path'), 1, $('#show_picture_path') , 'append');
+
+	function bankImg(id,type,show_img, limit){
+	            //银行正面照
+	            id.uploadify({
+	                'width'    : '121',
+	                'height'   : '31',
+	                'swf'      : '/uploadify/uploadify.swf',
+	                'uploader' : '/upload/tmpfile',
+	                'fileSizeLimit' : '2MB',
+	                'fileTypeExts' : '*.jpg;*.png;*.jpeg;*.bmp;*.png',
+	                'formData' : {
+	                    'sid' : '{{ sid }}',
+	                    'type' :type,
+	                    'member' : 1 
+	                    
+	                },
+	                'buttonClass' : 'upload_btn',
+	                'buttonText'  : '浏览',
+	                'multi'       : false,
+	                onDialogOpen : function() {
+	                    $('.gy_step').eq(1).addClass("active").siblings().removeClass("active");
+	                },
+	                onUploadSuccess  : function(file, data, response) {
+	                    data = $.parseJSON(data);
+	                    alert(data.msg);
+	                    if(data.status) {
+	                        // show_img.attr("src":data.path);
+	                        if(limit == 'append') {
+	                            show_img.append(data.html);
+	                        }else if(limit =='html'){
+	                            show_img.html(data.html);
+	                        }
+	                        // tip_id.val(data.path);
+	                        // tip_id.next('i').html('<span class="msg-wrap n-ok" role="alert"><span class="n-icon"></span><span class="n-msg"></span></span>');
+	                    }
+	                }
+	        });
+	    }
+	    selectBycate(1);
+})
+
+function selectBycate (cid) {
+	$.get('/ajax/getcate', {'parent_id' : cid} , function(json) {
+		var str = '';
+		data = eval(json);
+		
+		
+		for(var o in data){  
+			str += '<a href="javascript:;">' + data[o].region_name + '</a>'
+			// add_arr.push(data[o].region_name);
+	     } 
+
+	     $('#show_cate_chid').html(str);
+	});
+}
+// 地区联动
+$(".selectAreas").ld({ajaxOptions : {"url" : "/ajax/getareasfull"},
+    defaultParentId : 0,
+    <?php if(isset($address) && $address) {
+        echo " texts : [{$address}],";
+    }?>
+    style : {"width" : 102}
+});
+$(".class_bank_address").ld({ajaxOptions : {"url" : "/ajax/getareasfull"},
+    defaultParentId : 0,
+    <?php if(isset($address) && $address) {
+        echo " texts : [{$address}],";
+    }?>
+    style : {"width" : 102}
+});
+</script>
+
+
+<style>
+.upload_btn {width: 121px;
+  height: 31px;
+  text-align: center;
+  line-height: 31px;
+  color: #808080;
+  font-family: '微软雅黑';
+  font-size: 14px;
+  background: url({{ constant('STATIC_URL') }}/mdg/images/yz_btn.png) no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  margin: 10px auto 0;
+  position: relative;}
+.edui-default .edui-editor{ margin:10px auto;}
+</style>
+
+
+<script src="{{ constant('STATIC_URL') }}mdg/version2.4/js/personal-center.js"></script>
+
+
+
+					<!-- 可信农场 农业企业 -->
+					<div class="buyer-common">
+						<div class="message clearfix">
+							<font>公司名称</font>
+							<div class="input-box">
+								<input type="text" name='ent_company_name' />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>注册登记证号</font>
+							<div class="input-box">
+								<input type="text" name='ent_certificate_no'/>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>公司地址</font>
+							<div class="select-box">
+								<select name='ent_province_id'>
+									<option>请选择</option>
+								</select name='ent_city_id' >
+								<select>
+									<option>请选择</option>
+								</select>
+								<select name='ent_district_id' >
+									<option>请选择</option>
+								</select>
+								<select  name='ent_town_id'>
+									<option>请选择</option>
+								</select>
+								<input class="f-db" type="text" name='ent_address' />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>企业法人</font>
+							<div class="input-box">
+								<input type="text" name='ent_erprise_legal_person' />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>身份证号</font>
+							<div class="input-box">
+								<input type="text" name='ent_certificate_no'  />
+							</div>
+						</div>
+						<div class="m-title mt20">联系人信息</div>
+						<div class="message clearfix">
+							<font>姓名</font>
+							<div class="input-box">
+								<input type="text" name='ent_contact_name'  />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>手机号</font>
+							<div class="input-box">
+								<input type="text" name='ent_contact_phone'  />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>传真</font>
+							<div class="input-box">
+								<input type="text"  name='ent_contact_fax'/>
+								<i>（没有可不填）</i>
+							</div>
+						</div>
+						<div class="m-title mt20">认证信息</div>
+						<div class="message clearfix">
+							<font>银行卡开户行</font>
+							<div class="select-box lang-select">
+								<select name='ent_bank_name' >
+									<option value=''>请选择</option>
+									{% for key , item in  bankList %}
+									<option value='{{ item['gate_id']}}'>{{ item['bank_name']}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+
+						<div class="message clearfix">
+							<font>开户行所在地</font>
+							<div class="select-box lang-select">
+
+								<select name='bank_province_id' class='class_bank_address'>
+									<option>请选择</option>
+								</select>
+								<select name='bank_city_id'  class='class_bank_address' >
+									<option>请选择</option>
+								</select>
+								<select name='bank_district_id'  class='class_bank_address' >
+									<option>请选择</option>
+								</select>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>开户名</font>
+							<div class="input-box">
+								<input type="text" />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>卡号</font>
+							<div class="input-box">
+								<input type="text"  />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>银行卡证明照</font>
+							<div class="loadImg-box">
+								<div class="imgs">
+									<img src="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg" height="145" width="120"></div>
+								<div class="file-btn">
+									<input class="btn1" type="button" value="上传图片" />
+									<input class="btn2" type="file" />
+									<a target="_blank" href="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg">查看样照</a>
+								</div>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>个体工商营业执照</font>
+							<div class="loadImg-box">
+								<div class="imgs">
+									<img src="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg" height="145" width="120"></div>
+								<div class="file-btn">
+									<input class="btn1" type="button" value="上传图片" />
+									<input class="btn2" type="file" />
+									<a target="_blank" href="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg">查看样照</a>
+								</div>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>身份证照</font>
+							<div class="loadImg-box">
+								<div class="imgs">
+									<img src="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg" height="145" width="120"></div>
+								<div class="file-btn">
+									<input class="btn1" type="button" value="上传图片" />
+									<input class="btn2" type="file" />
+									<a target="_blank" href="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg">查看样照</a>
+								</div>
+							</div>
+						</div>
+						<div class="m-title mt20">农场信息</div>
+						<div class="message clearfix">
+							<font>农场名</font>
+							<div class="input-box">
+								<input type="text" />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>农场地址</font>
+							<div class="select-box">
+								<select >
+									<option>请选择</option>
+								</select>
+								<select>
+									<option>请选择</option>
+								</select>
+								<select>
+									<option>请选择</option>
+								</select>
+								<select>
+									<option>请选择</option>
+								</select>
+								<input class="f-db" type="text" />
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>农场面积</font>
+							<div class="input-box short-input">
+								<input type="text" />
+								<i>亩</i>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>种植作物</font>
+							<div class="select-box lang-select clearfix categrey-option">
+								<div class="choose-box f-fl">
+									<select>
+										<option>水果</option>
+										<option>蔬菜</option>
+										<option>粮油</option>
+									</select>
+									<div class="erji-box">
+										<a href="javascript:;">苹果</a>
+										<a href="javascript:;">梨</a>
+										<a href="javascript:;">西瓜</a>
+									</div>
+								</div>
+								<div class="btn-box f-fl">
+									<a class="btn1" href="javascript:;">添加</a>
+									<a class="btn2" href="javascript:;">删除</a>
+								</div>
+								<div class="result-box f-fl">
+									<em>苹果</em>
+								</div>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>农场照片</font>
+							<div class="loadImg-box">
+								<div class="imgs">
+									<img src="{{ constant('STATIC_URL')}}/mdg/version2.4/images/trace-list-img.jpg" height="145" width="120">
+									<a class="close-img" href="javascript:;">删除</a>
+								</div>
+								<div class="file-btn">
+									<input class="btn1" type="button" value="上传图片" />
+									<input class="btn2" type="file" />
+									<i>（选填）</i>
+								</div>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>土地来源</font>
+							<div class="radio-box buyer-input">
+								<label>
+									<input type="radio" checked>
+									<em>自有</em>
+								</label>
+								<label>
+									<input type="radio">
+									<em>流转</em>
+								</label>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>土地使用年限</font>
+							<div class="select-box">
+								<select>
+									<option>请选择</option>
+								</select>
+								<i>年</i>
+								<select>
+									<option>请选择</option>
+								</select>
+								<i>月</i>
+							</div>
+						</div>
+						<div class="message clearfix">
+							<font>农场简介</font>
+							<div class="textarea-box">
+								<textarea></textarea>
+								<i>（选填）</i>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<input class="buyer-btn" type="submit" value="提交申请" />
+			</div>
+
+		</div>
+	</div>
+</div>
+
+</form>
+
+<!--尾部 start-->
+{{ partial('layouts/footer') }}
+<!--尾部 end-->
+<script src="{{ constant('STATIC_URL') }}mdg/version2.4/js/personal-center.js"></script>

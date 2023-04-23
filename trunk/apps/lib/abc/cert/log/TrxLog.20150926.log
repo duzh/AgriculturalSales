@@ -1,0 +1,681 @@
+
+2015-09-26 10:30:35 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:30:35 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}}
+2015-09-26 10:30:35 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"jBPzFZanhqsF4AoGqsGIOT4DowPxLFKc1QXMGFfZaWWik3D0PBaBjFj4qT0c8a9Q0CSbJ7iIsV7eQ9VkQfiNNrJ2ioHeWGquuuEpxNLcHcaUGZAD93FG6aNG+QNkT/vOWaQUrZRFarqfDMDQ/73uxuKJfXYd1OoltxYBHpV4nFA="}
+2015-09-26 10:30:35 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:30:35 提交交易报文：
+2015-09-26 10:30:35 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"jBPzFZanhqsF4AoGqsGIOT4DowPxLFKc1QXMGFfZaWWik3D0PBaBjFj4qT0c8a9Q0CSbJ7iIsV7eQ9VkQfiNNrJ2ioHeWGquuuEpxNLcHcaUGZAD93FG6aNG+QNkT/vOWaQUrZRFarqfDMDQ/73uxuKJfXYd1OoltxYBHpV4nFA="}
+2015-09-26 10:30:35 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:30:35 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:30:35 生成交易响应对象：
+2015-09-26 10:30:35 交易结果：[2307]
+2015-09-26 10:30:35 错误信息：[无此账单！]
+2015-09-26 10:30:35 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:31:00 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:31:00 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}}
+2015-09-26 10:31:00 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"jBPzFZanhqsF4AoGqsGIOT4DowPxLFKc1QXMGFfZaWWik3D0PBaBjFj4qT0c8a9Q0CSbJ7iIsV7eQ9VkQfiNNrJ2ioHeWGquuuEpxNLcHcaUGZAD93FG6aNG+QNkT/vOWaQUrZRFarqfDMDQ/73uxuKJfXYd1OoltxYBHpV4nFA="}
+2015-09-26 10:31:00 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:31:00 提交交易报文：
+2015-09-26 10:31:00 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"jBPzFZanhqsF4AoGqsGIOT4DowPxLFKc1QXMGFfZaWWik3D0PBaBjFj4qT0c8a9Q0CSbJ7iIsV7eQ9VkQfiNNrJ2ioHeWGquuuEpxNLcHcaUGZAD93FG6aNG+QNkT/vOWaQUrZRFarqfDMDQ/73uxuKJfXYd1OoltxYBHpV4nFA="}
+2015-09-26 10:31:01 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:31:01 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:31:01 生成交易响应对象：
+2015-09-26 10:31:01 交易结果：[2307]
+2015-09-26 10:31:01 错误信息：[无此账单！]
+2015-09-26 10:31:01 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:32:04 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:32:04 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}}
+2015-09-26 10:32:04 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"jBPzFZanhqsF4AoGqsGIOT4DowPxLFKc1QXMGFfZaWWik3D0PBaBjFj4qT0c8a9Q0CSbJ7iIsV7eQ9VkQfiNNrJ2ioHeWGquuuEpxNLcHcaUGZAD93FG6aNG+QNkT/vOWaQUrZRFarqfDMDQ/73uxuKJfXYd1OoltxYBHpV4nFA="}
+2015-09-26 10:32:04 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:32:04 提交交易报文：
+2015-09-26 10:32:04 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23392015099685","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"jBPzFZanhqsF4AoGqsGIOT4DowPxLFKc1QXMGFfZaWWik3D0PBaBjFj4qT0c8a9Q0CSbJ7iIsV7eQ9VkQfiNNrJ2ioHeWGquuuEpxNLcHcaUGZAD93FG6aNG+QNkT/vOWaQUrZRFarqfDMDQ/73uxuKJfXYd1OoltxYBHpV4nFA="}
+2015-09-26 10:32:04 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:32:04 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:32:04 生成交易响应对象：
+2015-09-26 10:32:04 交易结果：[2307]
+2015-09-26 10:32:04 错误信息：[无此账单！]
+2015-09-26 10:32:04 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:45:31 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:45:31 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23442015095724","QueryDetail":"true"}}
+2015-09-26 10:45:31 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23442015095724","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"K9KXwDtFVjJvBn4acwo3Ijxpenu44OMpeLh/2TrC2kGl2s6r0iqavcNlcGuyLfcI18EPL9IRDL1QJVdXYwektVkBCZKD97bU+xcejVxrqPw9xzxhs09wCVxhHMzSKj5fu6XqgiLyVjIx5ONOSFUczidjS+vs/crqt7tHPS+ILf0="}
+2015-09-26 10:45:31 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:45:31 提交交易报文：
+2015-09-26 10:45:31 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23442015095724","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"K9KXwDtFVjJvBn4acwo3Ijxpenu44OMpeLh/2TrC2kGl2s6r0iqavcNlcGuyLfcI18EPL9IRDL1QJVdXYwektVkBCZKD97bU+xcejVxrqPw9xzxhs09wCVxhHMzSKj5fu6XqgiLyVjIx5ONOSFUczidjS+vs/crqt7tHPS+ILf0="}
+2015-09-26 10:45:37 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:45:37 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:45:37 生成交易响应对象：
+2015-09-26 10:45:37 交易结果：[2307]
+2015-09-26 10:45:37 错误信息：[无此账单！]
+2015-09-26 10:45:37 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:45:33 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:45:33 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23442015095724","QueryDetail":"true"}}
+2015-09-26 10:45:33 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23442015095724","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"K9KXwDtFVjJvBn4acwo3Ijxpenu44OMpeLh/2TrC2kGl2s6r0iqavcNlcGuyLfcI18EPL9IRDL1QJVdXYwektVkBCZKD97bU+xcejVxrqPw9xzxhs09wCVxhHMzSKj5fu6XqgiLyVjIx5ONOSFUczidjS+vs/crqt7tHPS+ILf0="}
+2015-09-26 10:45:33 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:45:33 提交交易报文：
+2015-09-26 10:45:33 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23442015095724","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"K9KXwDtFVjJvBn4acwo3Ijxpenu44OMpeLh/2TrC2kGl2s6r0iqavcNlcGuyLfcI18EPL9IRDL1QJVdXYwektVkBCZKD97bU+xcejVxrqPw9xzxhs09wCVxhHMzSKj5fu6XqgiLyVjIx5ONOSFUczidjS+vs/crqt7tHPS+ILf0="}
+2015-09-26 10:45:43 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:45:43 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:45:43 生成交易响应对象：
+2015-09-26 10:45:43 交易结果：[2307]
+2015-09-26 10:45:43 错误信息：[无此账单！]
+2015-09-26 10:45:43 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:50:17 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:50:17 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}}
+2015-09-26 10:50:17 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 10:50:17 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:50:17 提交交易报文：
+2015-09-26 10:50:17 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 10:50:22 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:50:22 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:50:22 生成交易响应对象：
+2015-09-26 10:50:22 交易结果：[2307]
+2015-09-26 10:50:22 错误信息：[无此账单！]
+2015-09-26 10:50:22 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:50:33 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:50:33 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}}
+2015-09-26 10:50:33 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 10:50:33 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:50:33 提交交易报文：
+2015-09-26 10:50:33 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 10:50:34 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:50:34 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:50:34 生成交易响应对象：
+2015-09-26 10:50:34 交易结果：[2307]
+2015-09-26 10:50:34 错误信息：[无此账单！]
+2015-09-26 10:50:34 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:50:41 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:50:41 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}}
+2015-09-26 10:50:41 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 10:50:41 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:50:41 提交交易报文：
+2015-09-26 10:50:41 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 10:50:51 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:50:51 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:50:51 生成交易响应对象：
+2015-09-26 10:50:51 交易结果：[2307]
+2015-09-26 10:50:51 错误信息：[无此账单！]
+2015-09-26 10:50:51 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:53:06 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:53:06 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}}
+2015-09-26 10:53:06 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:06 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:53:06 提交交易报文：
+2015-09-26 10:53:06 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:11 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:53:11 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:53:11 生成交易响应对象：
+2015-09-26 10:53:11 交易结果：[2307]
+2015-09-26 10:53:11 错误信息：[无此账单！]
+2015-09-26 10:53:11 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:53:12 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:53:12 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}}
+2015-09-26 10:53:12 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:12 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:53:12 提交交易报文：
+2015-09-26 10:53:12 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:18 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:53:18 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:53:18 生成交易响应对象：
+2015-09-26 10:53:18 交易结果：[2307]
+2015-09-26 10:53:18 错误信息：[无此账单！]
+2015-09-26 10:53:18 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:53:18 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:53:18 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}}
+2015-09-26 10:53:18 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:18 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:53:18 提交交易报文：
+2015-09-26 10:53:18 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:18 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:53:18 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:53:18 生成交易响应对象：
+2015-09-26 10:53:18 交易结果：[2307]
+2015-09-26 10:53:18 错误信息：[无此账单！]
+2015-09-26 10:53:18 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:53:23 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:53:23 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}}
+2015-09-26 10:53:23 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:23 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:53:23 提交交易报文：
+2015-09-26 10:53:23 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:24 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:53:24 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:53:24 生成交易响应对象：
+2015-09-26 10:53:24 交易结果：[2307]
+2015-09-26 10:53:24 错误信息：[无此账单！]
+2015-09-26 10:53:24 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:53:19 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:53:19 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}}
+2015-09-26 10:53:19 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:19 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:53:19 提交交易报文：
+2015-09-26 10:53:19 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 10:53:24 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:53:24 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:53:24 生成交易响应对象：
+2015-09-26 10:53:24 交易结果：[2307]
+2015-09-26 10:53:24 错误信息：[无此账单！]
+2015-09-26 10:53:24 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 10:55:46 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 10:55:46 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}}
+2015-09-26 10:55:46 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"AWRLo/n70JiNy6I+bFgxoXe0Ru7pElZD4dL6sF2V9HabvSy3BNrLk8W7nSivMdnVGSyn4vWTen1xGXabbeBFiRwJI7TUQ6cXb3Ed4Hv/xqBDPNevclHa0kMtOIAmzbZnAlCyPng5sLpEYAbOAZ/gdZYs18J8ntVmrQxLpoIYwBI="}
+2015-09-26 10:55:46 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 10:55:46 提交交易报文：
+2015-09-26 10:55:46 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"AWRLo/n70JiNy6I+bFgxoXe0Ru7pElZD4dL6sF2V9HabvSy3BNrLk8W7nSivMdnVGSyn4vWTen1xGXabbeBFiRwJI7TUQ6cXb3Ed4Hv/xqBDPNevclHa0kMtOIAmzbZnAlCyPng5sLpEYAbOAZ/gdZYs18J8ntVmrQxLpoIYwBI="}
+2015-09-26 10:55:57 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 10:55:57 验证网上支付平台响应报文的签名：正确
+2015-09-26 10:55:57 生成交易响应对象：
+2015-09-26 10:55:57 交易结果：[2307]
+2015-09-26 10:55:57 错误信息：[无此账单！]
+2015-09-26 10:55:57 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:02:16 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:02:16 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}}
+2015-09-26 11:02:16 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:02:16 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:02:16 提交交易报文：
+2015-09-26 11:02:16 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:02:27 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:02:27 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:02:27 生成交易响应对象：
+2015-09-26 11:02:27 交易结果：[2307]
+2015-09-26 11:02:27 错误信息：[无此账单！]
+2015-09-26 11:02:27 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:04:17 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:04:17 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}}
+2015-09-26 11:04:17 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"AWRLo/n70JiNy6I+bFgxoXe0Ru7pElZD4dL6sF2V9HabvSy3BNrLk8W7nSivMdnVGSyn4vWTen1xGXabbeBFiRwJI7TUQ6cXb3Ed4Hv/xqBDPNevclHa0kMtOIAmzbZnAlCyPng5sLpEYAbOAZ/gdZYs18J8ntVmrQxLpoIYwBI="}
+2015-09-26 11:04:17 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:04:17 提交交易报文：
+2015-09-26 11:04:17 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"AWRLo/n70JiNy6I+bFgxoXe0Ru7pElZD4dL6sF2V9HabvSy3BNrLk8W7nSivMdnVGSyn4vWTen1xGXabbeBFiRwJI7TUQ6cXb3Ed4Hv/xqBDPNevclHa0kMtOIAmzbZnAlCyPng5sLpEYAbOAZ/gdZYs18J8ntVmrQxLpoIYwBI="}
+2015-09-26 11:04:22 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:04:22 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:04:22 生成交易响应对象：
+2015-09-26 11:04:22 交易结果：[2307]
+2015-09-26 11:04:22 错误信息：[无此账单！]
+2015-09-26 11:04:22 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:04:27 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:04:27 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}}
+2015-09-26 11:04:27 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"AWRLo/n70JiNy6I+bFgxoXe0Ru7pElZD4dL6sF2V9HabvSy3BNrLk8W7nSivMdnVGSyn4vWTen1xGXabbeBFiRwJI7TUQ6cXb3Ed4Hv/xqBDPNevclHa0kMtOIAmzbZnAlCyPng5sLpEYAbOAZ/gdZYs18J8ntVmrQxLpoIYwBI="}
+2015-09-26 11:04:27 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:04:27 提交交易报文：
+2015-09-26 11:04:27 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23362015097016","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"AWRLo/n70JiNy6I+bFgxoXe0Ru7pElZD4dL6sF2V9HabvSy3BNrLk8W7nSivMdnVGSyn4vWTen1xGXabbeBFiRwJI7TUQ6cXb3Ed4Hv/xqBDPNevclHa0kMtOIAmzbZnAlCyPng5sLpEYAbOAZ/gdZYs18J8ntVmrQxLpoIYwBI="}
+2015-09-26 11:04:27 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:04:27 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:04:27 生成交易响应对象：
+2015-09-26 11:04:27 交易结果：[2307]
+2015-09-26 11:04:27 错误信息：[无此账单！]
+2015-09-26 11:04:27 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:04:29 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:04:29 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}}
+2015-09-26 11:04:29 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:04:29 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:04:29 提交交易报文：
+2015-09-26 11:04:29 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:04:34 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:04:34 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:04:34 生成交易响应对象：
+2015-09-26 11:04:34 交易结果：[2307]
+2015-09-26 11:04:34 错误信息：[无此账单！]
+2015-09-26 11:04:34 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:04:20 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:04:20 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}}
+2015-09-26 11:04:20 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:04:20 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:04:20 提交交易报文：
+2015-09-26 11:04:20 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:04:36 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:04:36 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:04:36 生成交易响应对象：
+2015-09-26 11:04:36 交易结果：[2307]
+2015-09-26 11:04:36 错误信息：[无此账单！]
+2015-09-26 11:04:36 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:04:38 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:04:38 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}}
+2015-09-26 11:04:38 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:04:38 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:04:38 提交交易报文：
+2015-09-26 11:04:38 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:04:43 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:04:43 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:04:43 生成交易响应对象：
+2015-09-26 11:04:43 交易结果：[2307]
+2015-09-26 11:04:43 错误信息：[无此账单！]
+2015-09-26 11:04:43 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:04:43 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:04:43 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}}
+2015-09-26 11:04:43 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 11:04:43 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:04:43 提交交易报文：
+2015-09-26 11:04:43 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 11:04:48 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:04:48 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:04:48 生成交易响应对象：
+2015-09-26 11:04:48 交易结果：[2307]
+2015-09-26 11:04:48 错误信息：[无此账单！]
+2015-09-26 11:04:48 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:04:53 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:04:53 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}}
+2015-09-26 11:04:53 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 11:04:53 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:04:53 提交交易报文：
+2015-09-26 11:04:53 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23372015098259","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"DfnQfQa2QvLUP1SCuhxHn4aAqsuee29u6a5R4NS/aGzCJMUo607q4Va3eKks4Mg1kJpCh6nBChOJpZenWnwdgiGl2X9k34R6pXKQHGmXlvDeRIfu3qOHRg6UT3oeS88IC9z2xFWYkgqJfc/dHxcJL1s3hpLSQJxWf44Svh3G3VI="}
+2015-09-26 11:04:53 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:04:53 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:04:53 生成交易响应对象：
+2015-09-26 11:04:53 交易结果：[2307]
+2015-09-26 11:04:53 错误信息：[无此账单！]
+2015-09-26 11:04:53 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:05:10 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:05:10 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}}
+2015-09-26 11:05:10 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:05:10 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:05:10 提交交易报文：
+2015-09-26 11:05:10 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23452015093979","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"U7h5/5fwwUnVh9J+Zy9agKGvuK5n1G9PVmWV39L4nj3Lt2HSuwSC6asTztdmksQvxMdlTH6w4iGzc4o2enOVEUd5prMcOW033fG4ngqbC9ROvgt/bf3XqwrkXTIY2OO6qo/eha/u5ooV0ppSwIWif1wQsEsIoEQwOM4gEfsrJl4="}
+2015-09-26 11:05:10 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:05:10 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:05:10 生成交易响应对象：
+2015-09-26 11:05:10 交易结果：[2307]
+2015-09-26 11:05:10 错误信息：[无此账单！]
+2015-09-26 11:05:10 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:05:31 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:05:31 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23352015092626","QueryDetail":"true"}}
+2015-09-26 11:05:31 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23352015092626","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"UkTC+3tx1N+M5qI/sgMeO5taaduO88Gepp/BsG4lTPRgXz+8tNpxjNkuay6wNlCl1aG67rCJoPM9TFHQQuC5SJXXtPUjSCXAxxfrJKI9/xQ9/ynBoO7j4Nx8Zc6WE6EnV1cpVW4y7B0RPVW0azy4giJQX84ocRMVJQRihDhWle4="}
+2015-09-26 11:05:31 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:05:31 提交交易报文：
+2015-09-26 11:05:31 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23352015092626","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"UkTC+3tx1N+M5qI/sgMeO5taaduO88Gepp/BsG4lTPRgXz+8tNpxjNkuay6wNlCl1aG67rCJoPM9TFHQQuC5SJXXtPUjSCXAxxfrJKI9/xQ9/ynBoO7j4Nx8Zc6WE6EnV1cpVW4y7B0RPVW0azy4giJQX84ocRMVJQRihDhWle4="}
+2015-09-26 11:05:36 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:05:36 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:05:36 生成交易响应对象：
+2015-09-26 11:05:36 交易结果：[2307]
+2015-09-26 11:05:36 错误信息：[无此账单！]
+2015-09-26 11:05:36 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:05:54 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:05:54 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23352015092626","QueryDetail":"true"}}
+2015-09-26 11:05:54 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23352015092626","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"UkTC+3tx1N+M5qI/sgMeO5taaduO88Gepp/BsG4lTPRgXz+8tNpxjNkuay6wNlCl1aG67rCJoPM9TFHQQuC5SJXXtPUjSCXAxxfrJKI9/xQ9/ynBoO7j4Nx8Zc6WE6EnV1cpVW4y7B0RPVW0azy4giJQX84ocRMVJQRihDhWle4="}
+2015-09-26 11:05:54 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:05:54 提交交易报文：
+2015-09-26 11:05:54 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23352015092626","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"UkTC+3tx1N+M5qI/sgMeO5taaduO88Gepp/BsG4lTPRgXz+8tNpxjNkuay6wNlCl1aG67rCJoPM9TFHQQuC5SJXXtPUjSCXAxxfrJKI9/xQ9/ynBoO7j4Nx8Zc6WE6EnV1cpVW4y7B0RPVW0azy4giJQX84ocRMVJQRihDhWle4="}
+2015-09-26 11:05:54 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:05:54 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:05:54 生成交易响应对象：
+2015-09-26 11:05:54 交易结果：[2307]
+2015-09-26 11:05:54 错误信息：[无此账单！]
+2015-09-26 11:05:54 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:09:17 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:09:17 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23342015092069","QueryDetail":"true"}}
+2015-09-26 11:09:17 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23342015092069","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"WvEg9bWp0f7E8yJiW/2syesZf/ocpZ15E7xTL0sI90UlMgIALM6duoFzHMdhnOcAWyPiS2krcjU9COh2BJoPEQSLMITEcQjsg21BtX6JiBLbnElMOuLUvGFVBoIl2CdaxxYnlI5dYffYE8zQlwPveH33WedWmAAfuHH1IVS6WMk="}
+2015-09-26 11:09:17 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:09:17 提交交易报文：
+2015-09-26 11:09:17 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23342015092069","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"WvEg9bWp0f7E8yJiW/2syesZf/ocpZ15E7xTL0sI90UlMgIALM6duoFzHMdhnOcAWyPiS2krcjU9COh2BJoPEQSLMITEcQjsg21BtX6JiBLbnElMOuLUvGFVBoIl2CdaxxYnlI5dYffYE8zQlwPveH33WedWmAAfuHH1IVS6WMk="}
+2015-09-26 11:09:17 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:09:17 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:09:17 生成交易响应对象：
+2015-09-26 11:09:17 交易结果：[2307]
+2015-09-26 11:09:17 错误信息：[无此账单！]
+2015-09-26 11:09:17 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:12:09 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:12:09 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}}
+2015-09-26 11:12:09 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"FggjRB0Z97u/oG7PphhlzxFXtLhAJW6b4mdyEx/U2PdCfwdi+Jj+KuYWeCt3rKZSGn558lVA72RNoC6/Sv4NHhaJSSxaLj4pzJ96cpVWn+uRlHrCws8OINShdbdKirNglblwMLxfPsS46fgGp2O3mEVjCM2L+IBnLPpud4qw6I0="}
+2015-09-26 11:12:09 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:12:09 提交交易报文：
+2015-09-26 11:12:09 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"FggjRB0Z97u/oG7PphhlzxFXtLhAJW6b4mdyEx/U2PdCfwdi+Jj+KuYWeCt3rKZSGn558lVA72RNoC6/Sv4NHhaJSSxaLj4pzJ96cpVWn+uRlHrCws8OINShdbdKirNglblwMLxfPsS46fgGp2O3mEVjCM2L+IBnLPpud4qw6I0="}
+2015-09-26 11:12:20 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:12:20 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:12:20 生成交易响应对象：
+2015-09-26 11:12:20 交易结果：[2307]
+2015-09-26 11:12:20 错误信息：[无此账单！]
+2015-09-26 11:12:20 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:13:06 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:13:06 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23462015096116","QueryDetail":"true"}}
+2015-09-26 11:13:06 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23462015096116","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"I2Fe5YpficI4JkvxD+OKs1Hs0R5yKG3PLNBUqGnZZmT3YnzLzG90ilVY0PBFQC6XU1lbLgRmXKKZzg+l1gPhhzt1VDIXvdWcLoJlV4aBJmVZeBEHtZmmPszrGigWsoVKrQjuQ3LY99W9hV+baBFSv0GhHvXgaSm4Es4+eaPjtKE="}
+2015-09-26 11:13:06 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:13:06 提交交易报文：
+2015-09-26 11:13:06 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23462015096116","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"I2Fe5YpficI4JkvxD+OKs1Hs0R5yKG3PLNBUqGnZZmT3YnzLzG90ilVY0PBFQC6XU1lbLgRmXKKZzg+l1gPhhzt1VDIXvdWcLoJlV4aBJmVZeBEHtZmmPszrGigWsoVKrQjuQ3LY99W9hV+baBFSv0GhHvXgaSm4Es4+eaPjtKE="}
+2015-09-26 11:13:12 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:13:12 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:13:12 生成交易响应对象：
+2015-09-26 11:13:12 交易结果：[2307]
+2015-09-26 11:13:12 错误信息：[无此账单！]
+2015-09-26 11:13:12 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:17:22 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:17:22 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}}
+2015-09-26 11:17:22 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Ipvp2K14Ub7QuQE0hZso2kP9+LnLXC40WfhRrv/ooX+iWSM6mFtzb08jwaVgMrqzezd2UEfAGkDg469ndhbfMaSMx1GoXLogb9AAyioxOchNtl198wR/zln4auvD4ZYqdRtKFeRXZu7Qfo8L1y8Rgln69VbdXomqh50m3hWKd2E="}
+2015-09-26 11:17:22 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:17:22 提交交易报文：
+2015-09-26 11:17:22 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Ipvp2K14Ub7QuQE0hZso2kP9+LnLXC40WfhRrv/ooX+iWSM6mFtzb08jwaVgMrqzezd2UEfAGkDg469ndhbfMaSMx1GoXLogb9AAyioxOchNtl198wR/zln4auvD4ZYqdRtKFeRXZu7Qfo8L1y8Rgln69VbdXomqh50m3hWKd2E="}
+2015-09-26 11:17:23 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:17:23 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:17:23 生成交易响应对象：
+2015-09-26 11:17:23 交易结果：[2307]
+2015-09-26 11:17:23 错误信息：[无此账单！]
+2015-09-26 11:17:23 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:18:15 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:18:15 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}}
+2015-09-26 11:18:15 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"FggjRB0Z97u/oG7PphhlzxFXtLhAJW6b4mdyEx/U2PdCfwdi+Jj+KuYWeCt3rKZSGn558lVA72RNoC6/Sv4NHhaJSSxaLj4pzJ96cpVWn+uRlHrCws8OINShdbdKirNglblwMLxfPsS46fgGp2O3mEVjCM2L+IBnLPpud4qw6I0="}
+2015-09-26 11:18:15 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:18:15 提交交易报文：
+2015-09-26 11:18:15 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"FggjRB0Z97u/oG7PphhlzxFXtLhAJW6b4mdyEx/U2PdCfwdi+Jj+KuYWeCt3rKZSGn558lVA72RNoC6/Sv4NHhaJSSxaLj4pzJ96cpVWn+uRlHrCws8OINShdbdKirNglblwMLxfPsS46fgGp2O3mEVjCM2L+IBnLPpud4qw6I0="}
+2015-09-26 11:18:15 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:18:15 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:18:15 生成交易响应对象：
+2015-09-26 11:18:15 交易结果：[2307]
+2015-09-26 11:18:15 错误信息：[无此账单！]
+2015-09-26 11:18:15 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:18:19 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:18:19 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}}
+2015-09-26 11:18:19 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"FggjRB0Z97u/oG7PphhlzxFXtLhAJW6b4mdyEx/U2PdCfwdi+Jj+KuYWeCt3rKZSGn558lVA72RNoC6/Sv4NHhaJSSxaLj4pzJ96cpVWn+uRlHrCws8OINShdbdKirNglblwMLxfPsS46fgGp2O3mEVjCM2L+IBnLPpud4qw6I0="}
+2015-09-26 11:18:19 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:18:19 提交交易报文：
+2015-09-26 11:18:19 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"FggjRB0Z97u/oG7PphhlzxFXtLhAJW6b4mdyEx/U2PdCfwdi+Jj+KuYWeCt3rKZSGn558lVA72RNoC6/Sv4NHhaJSSxaLj4pzJ96cpVWn+uRlHrCws8OINShdbdKirNglblwMLxfPsS46fgGp2O3mEVjCM2L+IBnLPpud4qw6I0="}
+2015-09-26 11:18:25 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:18:25 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:18:25 生成交易响应对象：
+2015-09-26 11:18:25 交易结果：[2307]
+2015-09-26 11:18:25 错误信息：[无此账单！]
+2015-09-26 11:18:25 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:18:23 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:18:23 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}}
+2015-09-26 11:18:23 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"FggjRB0Z97u/oG7PphhlzxFXtLhAJW6b4mdyEx/U2PdCfwdi+Jj+KuYWeCt3rKZSGn558lVA72RNoC6/Sv4NHhaJSSxaLj4pzJ96cpVWn+uRlHrCws8OINShdbdKirNglblwMLxfPsS46fgGp2O3mEVjCM2L+IBnLPpud4qw6I0="}
+2015-09-26 11:18:23 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:18:23 提交交易报文：
+2015-09-26 11:18:23 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23332015092424","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"FggjRB0Z97u/oG7PphhlzxFXtLhAJW6b4mdyEx/U2PdCfwdi+Jj+KuYWeCt3rKZSGn558lVA72RNoC6/Sv4NHhaJSSxaLj4pzJ96cpVWn+uRlHrCws8OINShdbdKirNglblwMLxfPsS46fgGp2O3mEVjCM2L+IBnLPpud4qw6I0="}
+2015-09-26 11:18:29 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:18:29 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:18:29 生成交易响应对象：
+2015-09-26 11:18:29 交易结果：[2307]
+2015-09-26 11:18:29 错误信息：[无此账单！]
+2015-09-26 11:18:29 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:21:32 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:21:32 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}}
+2015-09-26 11:21:32 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Ipvp2K14Ub7QuQE0hZso2kP9+LnLXC40WfhRrv/ooX+iWSM6mFtzb08jwaVgMrqzezd2UEfAGkDg469ndhbfMaSMx1GoXLogb9AAyioxOchNtl198wR/zln4auvD4ZYqdRtKFeRXZu7Qfo8L1y8Rgln69VbdXomqh50m3hWKd2E="}
+2015-09-26 11:21:32 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:21:32 提交交易报文：
+2015-09-26 11:21:32 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Ipvp2K14Ub7QuQE0hZso2kP9+LnLXC40WfhRrv/ooX+iWSM6mFtzb08jwaVgMrqzezd2UEfAGkDg469ndhbfMaSMx1GoXLogb9AAyioxOchNtl198wR/zln4auvD4ZYqdRtKFeRXZu7Qfo8L1y8Rgln69VbdXomqh50m3hWKd2E="}
+2015-09-26 11:21:32 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:21:32 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:21:32 生成交易响应对象：
+2015-09-26 11:21:32 交易结果：[2307]
+2015-09-26 11:21:32 错误信息：[无此账单！]
+2015-09-26 11:21:32 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:21:27 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:21:27 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}}
+2015-09-26 11:21:27 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Ipvp2K14Ub7QuQE0hZso2kP9+LnLXC40WfhRrv/ooX+iWSM6mFtzb08jwaVgMrqzezd2UEfAGkDg469ndhbfMaSMx1GoXLogb9AAyioxOchNtl198wR/zln4auvD4ZYqdRtKFeRXZu7Qfo8L1y8Rgln69VbdXomqh50m3hWKd2E="}
+2015-09-26 11:21:27 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:21:27 提交交易报文：
+2015-09-26 11:21:27 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23432015096276","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"Ipvp2K14Ub7QuQE0hZso2kP9+LnLXC40WfhRrv/ooX+iWSM6mFtzb08jwaVgMrqzezd2UEfAGkDg469ndhbfMaSMx1GoXLogb9AAyioxOchNtl198wR/zln4auvD4ZYqdRtKFeRXZu7Qfo8L1y8Rgln69VbdXomqh50m3hWKd2E="}
+2015-09-26 11:21:38 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:21:38 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:21:38 生成交易响应对象：
+2015-09-26 11:21:38 交易结果：[2307]
+2015-09-26 11:21:38 错误信息：[无此账单！]
+2015-09-26 11:21:38 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:24:11 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:24:11 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23322015096111","QueryDetail":"true"}}
+2015-09-26 11:24:11 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23322015096111","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"cuPLCrK6xz0y0CwllNb8oUU6gP6DyZcbFXCNvayg3ZqC1DbwQSEndiUM9mggkEsegGjhOQ9VchOXEzUYsaXbHXv8pQ6K+XNjO2u7zh3cEGfOd/L2omiyAeFdu2hagLtqaZjKq67puHflSK2bm8yaBLmNrHgKrqGij+y0SFcJ2Ns="}
+2015-09-26 11:24:11 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:24:11 提交交易报文：
+2015-09-26 11:24:11 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23322015096111","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"cuPLCrK6xz0y0CwllNb8oUU6gP6DyZcbFXCNvayg3ZqC1DbwQSEndiUM9mggkEsegGjhOQ9VchOXEzUYsaXbHXv8pQ6K+XNjO2u7zh3cEGfOd/L2omiyAeFdu2hagLtqaZjKq67puHflSK2bm8yaBLmNrHgKrqGij+y0SFcJ2Ns="}
+2015-09-26 11:24:11 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:24:11 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:24:11 生成交易响应对象：
+2015-09-26 11:24:11 交易结果：[2307]
+2015-09-26 11:24:11 错误信息：[无此账单！]
+2015-09-26 11:24:11 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 11:27:14 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 11:27:14 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23322015096111","QueryDetail":"true"}}
+2015-09-26 11:27:14 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23322015096111","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"cuPLCrK6xz0y0CwllNb8oUU6gP6DyZcbFXCNvayg3ZqC1DbwQSEndiUM9mggkEsegGjhOQ9VchOXEzUYsaXbHXv8pQ6K+XNjO2u7zh3cEGfOd/L2omiyAeFdu2hagLtqaZjKq67puHflSK2bm8yaBLmNrHgKrqGij+y0SFcJ2Ns="}
+2015-09-26 11:27:14 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 11:27:14 提交交易报文：
+2015-09-26 11:27:14 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg23322015096111","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"cuPLCrK6xz0y0CwllNb8oUU6gP6DyZcbFXCNvayg3ZqC1DbwQSEndiUM9mggkEsegGjhOQ9VchOXEzUYsaXbHXv8pQ6K+XNjO2u7zh3cEGfOd/L2omiyAeFdu2hagLtqaZjKq67puHflSK2bm8yaBLmNrHgKrqGij+y0SFcJ2Ns="}
+2015-09-26 11:27:15 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 11:27:15 验证网上支付平台响应报文的签名：正确
+2015-09-26 11:27:15 生成交易响应对象：
+2015-09-26 11:27:15 交易结果：[2307]
+2015-09-26 11:27:15 错误信息：[无此账单！]
+2015-09-26 11:27:15 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 22:30:08 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 22:30:08 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}}
+2015-09-26 22:30:08 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"IW9MPT54iAVzui/e1L9zD/s2WIEXdvsGPIOebs36aaEQQWi8/biShj7Rj6JIR7/uIQVbS+bTO7IRa0MxpEaxDOKpR9kWLPBBJmmH2+UmSPIsJLulbRndZoFAJjs/4SuCyEUJov+EthIhiEbRHYWbCW6YDXp0/s6ri+3R1A5bkhE="}
+2015-09-26 22:30:08 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 22:30:08 提交交易报文：
+2015-09-26 22:30:08 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"IW9MPT54iAVzui/e1L9zD/s2WIEXdvsGPIOebs36aaEQQWi8/biShj7Rj6JIR7/uIQVbS+bTO7IRa0MxpEaxDOKpR9kWLPBBJmmH2+UmSPIsJLulbRndZoFAJjs/4SuCyEUJov+EthIhiEbRHYWbCW6YDXp0/s6ri+3R1A5bkhE="}
+2015-09-26 22:30:08 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 22:30:08 验证网上支付平台响应报文的签名：正确
+2015-09-26 22:30:08 生成交易响应对象：
+2015-09-26 22:30:08 交易结果：[2307]
+2015-09-26 22:30:08 错误信息：[无此账单！]
+2015-09-26 22:30:08 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 22:31:31 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 22:31:31 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}}
+2015-09-26 22:31:31 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"IW9MPT54iAVzui/e1L9zD/s2WIEXdvsGPIOebs36aaEQQWi8/biShj7Rj6JIR7/uIQVbS+bTO7IRa0MxpEaxDOKpR9kWLPBBJmmH2+UmSPIsJLulbRndZoFAJjs/4SuCyEUJov+EthIhiEbRHYWbCW6YDXp0/s6ri+3R1A5bkhE="}
+2015-09-26 22:31:31 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 22:31:31 提交交易报文：
+2015-09-26 22:31:31 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"IW9MPT54iAVzui/e1L9zD/s2WIEXdvsGPIOebs36aaEQQWi8/biShj7Rj6JIR7/uIQVbS+bTO7IRa0MxpEaxDOKpR9kWLPBBJmmH2+UmSPIsJLulbRndZoFAJjs/4SuCyEUJov+EthIhiEbRHYWbCW6YDXp0/s6ri+3R1A5bkhE="}
+2015-09-26 22:31:36 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 22:31:36 验证网上支付平台响应报文的签名：正确
+2015-09-26 22:31:36 生成交易响应对象：
+2015-09-26 22:31:36 交易结果：[2307]
+2015-09-26 22:31:36 错误信息：[无此账单！]
+2015-09-26 22:31:36 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 22:33:37 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 22:33:37 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}}
+2015-09-26 22:33:37 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"IW9MPT54iAVzui/e1L9zD/s2WIEXdvsGPIOebs36aaEQQWi8/biShj7Rj6JIR7/uIQVbS+bTO7IRa0MxpEaxDOKpR9kWLPBBJmmH2+UmSPIsJLulbRndZoFAJjs/4SuCyEUJov+EthIhiEbRHYWbCW6YDXp0/s6ri+3R1A5bkhE="}
+2015-09-26 22:33:37 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 22:33:37 提交交易报文：
+2015-09-26 22:33:37 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"IW9MPT54iAVzui/e1L9zD/s2WIEXdvsGPIOebs36aaEQQWi8/biShj7Rj6JIR7/uIQVbS+bTO7IRa0MxpEaxDOKpR9kWLPBBJmmH2+UmSPIsJLulbRndZoFAJjs/4SuCyEUJov+EthIhiEbRHYWbCW6YDXp0/s6ri+3R1A5bkhE="}
+2015-09-26 22:33:37 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 22:33:37 验证网上支付平台响应报文的签名：正确
+2015-09-26 22:33:37 生成交易响应对象：
+2015-09-26 22:33:37 交易结果：[2307]
+2015-09-26 22:33:37 错误信息：[无此账单！]
+2015-09-26 22:33:37 交易结束==================================================
+                    
+                    
+                    
+                    
+2015-09-26 22:34:48 TrustPayClient V3.0.0 交易开始==========================
+2015-09-26 22:34:48 检查交易请求是否合法：正确完整交易报文：{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}}
+2015-09-26 22:34:48 提交网上支付平台的报文：
+                    {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"IW9MPT54iAVzui/e1L9zD/s2WIEXdvsGPIOebs36aaEQQWi8/biShj7Rj6JIR7/uIQVbS+bTO7IRa0MxpEaxDOKpR9kWLPBBJmmH2+UmSPIsJLulbRndZoFAJjs/4SuCyEUJov+EthIhiEbRHYWbCW6YDXp0/s6ri+3R1A5bkhE="}
+2015-09-26 22:34:48 网上支付平台URL：[https://pay.abchina.com/ebus/trustpay/ReceiveMerchantTrxReqServlet] 
+2015-09-26 22:34:48 提交交易报文：
+2015-09-26 22:34:48 {"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxRequest":{"TrxType":"Query","PayTypeID":"ImmediatePay","OrderNo":"mdg189982015092922","QueryDetail":"true"}},"Signature-Algorithm":"SHA1withRSA","Signature":"IW9MPT54iAVzui/e1L9zD/s2WIEXdvsGPIOebs36aaEQQWi8/biShj7Rj6JIR7/uIQVbS+bTO7IRa0MxpEaxDOKpR9kWLPBBJmmH2+UmSPIsJLulbRndZoFAJjs/4SuCyEUJov+EthIhiEbRHYWbCW6YDXp0/s6ri+3R1A5bkhE="}
+2015-09-26 22:34:49 返回报文：\n{"MSG":{"Message":{"Version":"V3.0.0","Format":"JSON","Merchant":{"ECMerchantType":"EBUS","MerchantID":"103881550000003"},"TrxResponse":{"ReturnCode":"2307","ErrorMessage":"无此账单！","TrxType":"Query","Order":""}},"Signature-Algorithm":"SHA1withRSA","Signature":"LdMEW2JR3acEFpZbbUYFYT4VmJCY6jBUCEJNZxX1Frr8GhGyhmeDSRja9csxO7gx9Lrl3RN2YfyEXoc+8Rsv5NFjONqhuSKOBMFtjIhWoxVv3Gb7FysdyuFKjYFvAYfjXhwaylqWVV4TtftthbUFkJ6HZkPna3Ge9oy7GjS5gTk="}}
+2015-09-26 22:34:49 验证网上支付平台响应报文的签名：正确
+2015-09-26 22:34:49 生成交易响应对象：
+2015-09-26 22:34:49 交易结果：[2307]
+2015-09-26 22:34:49 错误信息：[无此账单！]
+2015-09-26 22:34:49 交易结束==================================================
+                    
+                    
+                    
+                    
